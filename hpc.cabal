@@ -1,0 +1,14 @@
+name:         hpc
+version:      0.5
+license:      BSD3
+license-file: LICENSE
+author:       Andy Gill
+maintainer:   libraries@haskell.org
+category:     Control
+synopsis:     Code Coverage Library for Haskell
+ghc-options: -Wall
+exposed-modules:
+		 Trace.Hpc.Util,
+		 Trace.Hpc.Mix,
+		 Trace.Hpc.Tix
+build-depends: base, directory, old-time
