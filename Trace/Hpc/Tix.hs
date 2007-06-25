@@ -6,7 +6,7 @@
 -- used by HPC. (.tix)
 module Trace.Hpc.Tix(Tix(..), TixModule(..), 
 		     tixModuleName, tixModuleHash, tixModuleTixs,
-		     readTix, writeTix, getTixProgName) where
+		     readTix, writeTix, getTixFileName) where
 
 import Data.List (isSuffixOf)
 import Trace.Hpc.Util(Hash)
@@ -33,26 +33,30 @@ tixModuleTixs (TixModule  _ _ _ tixs) = tixs
 -- We /always/ read and write Tix from the current working directory.
 
 -- read a Tix File.
-readTix :: String -- ^ binary name
+readTix :: String
 	-> IO (Maybe Tix)
-readTix pname = 
-  catch (do contents <- readFile $ tixName pname 
+readTix tix_filename = 
+  catch (do contents <- readFile $ tix_filename
 	    return $ Just $ read contents)
 	(\ _ -> return $ Nothing)
 
 -- write a Tix File.
-writeTix :: String -- ^ binary name
+writeTix :: String 
 	 -> Tix 
 	 -> IO ()
-writeTix pname tix = 
-  writeFile (tixName pname) (show tix)
+writeTix name tix = 
+  writeFile name (show tix)
 
+{-
 tixName :: String -> String
 tixName name = name ++ ".tix"
+-}
 
-getTixProgName :: String -> String
-getTixProgName str | ".tix" `isSuffixOf` str 
-		   = reverse $ drop (length ".tix") $ reverse str
-		   | otherwise
+-- getTixFullName takes a binary or .tix-file name,
+-- and normalizes it into a .tix-file name.
+getTixFileName :: String -> String
+getTixFileName str | ".tix" `isSuffixOf` str 
 		   = str
+		   | otherwise
+		   = str ++ ".tix"
 
