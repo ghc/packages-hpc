@@ -10,5 +10,7 @@ ghc-options: -Wall
 exposed-modules:
 		 Trace.Hpc.Util,
 		 Trace.Hpc.Mix,
-		 Trace.Hpc.Tix
+		 Trace.Hpc.Tix,
+		 Trace.Hpc.Reflect
+
 build-depends: base, directory, old-time

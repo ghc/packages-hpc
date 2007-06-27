@@ -38,11 +38,11 @@ import Trace.Hpc.Util (HpcPos, insideHpcPos, Hash, HpcHash(..))
 --  * With hpc-tracer, this is 8 (a tab represents several spaces).
 
 data Mix = Mix 
-	     FilePath		-- location of original file
-	     Integer		-- time (in seconds) of original file's last update, since 1970.
-	     Hash		-- hash of mix entry + timestamp
-	     Int 		-- tab stop value.
-	     [MixEntry] 	-- entries
+	     FilePath		-- ^location of original file
+	     Integer		-- ^time (in seconds) of original file's last update, since 1970.
+	     Hash		-- ^hash of mix entry + timestamp
+	     Int 		-- ^tab stop value.
+	     [MixEntry] 	-- ^entries
 	deriving (Show,Read)
 
 -- We would rather use ClockTime in Mix, but ClockTime has no Read instance in 6.4 and before,
