@@ -17,10 +17,10 @@ data Tix = Tix [TixModule]
 	deriving (Read, Show, Eq)
 
 data TixModule = TixModule 
-		 String    -- ^module name
-		 Hash	   -- ^hash number
-		 Int 	   -- ^length of tix list (allows pre-allocation at parse time).
-		 [Integer] -- ^actual ticks
+		 String    -- module name
+		 Hash	   -- hash number
+		 Int 	   -- length of tix list (allows pre-allocation at parse time).
+		 [Integer] --  actual ticks
 	deriving (Read, Show, Eq)
 
 tixModuleName :: TixModule -> String
