@@ -14,7 +14,9 @@ module Trace.Hpc.Util
        , Hash
        ) where
 
+#if __GLASGOW_HASKELL__ > 602
 import qualified Data.Map as Map
+#endif
 import Data.List(foldl')
 import Data.Char (ord)
 import Data.Word 
@@ -54,7 +56,7 @@ instance Read HpcPos where
          (l1,':':c1)	  = span (/= ':') lhs0
          (l2,':':c2)	  = span (/= ':') rhs0
 
-
+#if __GLASGOW_HASKELL__ > 602
 -- turns \n into ' '
 -- | grab's the text behind a HpcPos; 
 grabHpcPos :: Map.Map Int String -> HpcPos -> String
@@ -69,6 +71,9 @@ grabHpcPos hsMap theSpan =
 	      	       	   Just ln -> ln
 			   Nothing -> error $ "bad line number : " ++ show n
 	          ) [l1..l2]
+#else
+grabHpcPos hsMap theSpan = error "grabHpcPos not available for GHC <= 6.2"
+#endif
 
 ------------------------------------------------------------------------------
 
