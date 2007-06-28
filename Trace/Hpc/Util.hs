@@ -9,14 +9,10 @@ module Trace.Hpc.Util
        , fromHpcPos
        , toHpcPos
        , insideHpcPos
-       , grabHpcPos 
        , HpcHash(..)
        , Hash
        ) where
 
-#if __GLASGOW_HASKELL__ > 602
-import qualified Data.Map as Map
-#endif
 import Data.List(foldl')
 import Data.Char (ord)
 import Data.Word 
@@ -55,25 +51,6 @@ instance Read HpcPos where
 			       _ -> error "bad parse"
          (l1,':':c1)	  = span (/= ':') lhs0
          (l2,':':c2)	  = span (/= ':') rhs0
-
-#if __GLASGOW_HASKELL__ > 602
--- turns \n into ' '
--- | grab's the text behind a HpcPos; 
-grabHpcPos :: Map.Map Int String -> HpcPos -> String
-grabHpcPos hsMap theSpan = 
-	 case lns of
-	   [ln] -> (take ((c2 - c1) + 1) $ drop (c1 - 1) ln)
-	   _ -> let lns1 = drop (c1 -1) (head lns) : tail lns
-                    lns2 = init lns1 ++ [take (c2 + 1) (last lns1) ]
-		 in foldl1 (\ xs ys -> xs ++ "\n" ++ ys) lns2
-  where (l1,c1,l2,c2) = fromHpcPos theSpan
-        lns = map (\ n -> case Map.lookup n hsMap of
-	      	       	   Just ln -> ln
-			   Nothing -> error $ "bad line number : " ++ show n
-	          ) [l1..l2]
-#else
-grabHpcPos hsMap theSpan = error "grabHpcPos not available for GHC <= 6.2"
-#endif
 
 ------------------------------------------------------------------------------
 
