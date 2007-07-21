@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage name="hpc001.tix">
+<coverage name="hpc_sample.tix">
   <module name = "Main">
     <exprs boxes="4" count="3"/>
     <booleans boxes="0" true="0" false="0" count="0"/>

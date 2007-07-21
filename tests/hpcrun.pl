@@ -7,8 +7,9 @@ while($ARGV[0] =~ /^--/) {
   if ($arg =~ /--hpc=(.*)/) {
     $HPC = $1;
   }
-  elsif ($arg =~ /--report/) {
-    $REPORT = 1;
+  if ($ARGV[0] =~ /--report/) {
+    shift @ARGV;
+    $REPORT = 1;       
   }
   elsif ($arg =~ /--exeext=(.*)/) {
     $exeext = $1;
@@ -22,6 +23,8 @@ while($ARGV[0] =~ /^--/) {
 die "no option --hpc=* provided\n" if (!defined($HPC));
         
 $binary = $ARGV[0] . $exeext;
+
+system("rm -f $binary.tix") if (defined($CLEAR));
 
 system(@ARGV);
 print "\n\n";

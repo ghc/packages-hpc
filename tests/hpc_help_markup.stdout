@@ -7,7 +7,7 @@ Options:
     --srcdir=DIR                  path to source directory of .hs files
                                   multi-use of srcdir possible
     --hpcdir=DIR                  sub-directory that contains .mix files
-                                  default .hpc [rarely changed]
+                                  default .hpc [rarely used]
     --fun-entry-count             show top-level function entry counts
     --highlight-covered           highlight covered code, rather that code gaps
     --destdir=DIR                 path to write output to

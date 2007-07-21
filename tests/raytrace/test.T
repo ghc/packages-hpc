@@ -1,5 +1,6 @@
 setTestOpts(compose(only_compiler_types(['ghc']),
-		    omit_ways(['ghci'])))
+		    compose(omit_ways(['ghci']),
+			    skip_if_fast)))
 
 # Set up the hpc common variable(s), including
 # a hack to find the true location of the hpc tools.
@@ -9,28 +10,30 @@ for dir in os.path.split(getTestDir()):
      hpc = '../' + hpc 
 hpc = hpc + '/../utils/hpc/hpc';
 
-hpc_args = ['perl hpcrun.pl --hpc=' + hpc,'-fhpc'];
-
-test('galois_raytrace', \
+test('hpc_raytrace', \
 	skip_if_fast, \
 	multimod_compile_and_run_with_prefix, \
-	['perl ../hpcrun.pl --hpc=' + hpc, 'Main','-fhpc -package parsec'])
+	['perl ../hpcrun.pl --clear --hpc=' + hpc, 'Main','-fhpc -package parsec'])
+
+runCmd("tar xf tixs.tar") 
+
+hpcsample = 'hpc_sample'
 
 test('hpc_report_multi_001', normal, run_command, \
-	[hpc + ' report galois_raytrace.tix --include=Geometry --per-module'])
+	[hpc + ' report ' + hpcsample + ' --include=Geometry --per-module'])
 test('hpc_report_multi_002', normal, run_command, \
-	[hpc + ' report galois_raytrace.tix --exclude=Geometry --per-module'])
+	[hpc + ' report ' + hpcsample + ' --exclude=Geometry --per-module'])
 test('hpc_report_multi_003', normal, run_command, \
-	[hpc + ' report galois_raytrace.tix --include=Geometry --per-module --decl-list']) 
+	[hpc + ' report ' + hpcsample + ' --include=Geometry --per-module --decl-list']) 
 
 test('hpc_markup_multi_001', normal, run_command, \
-	[hpc + ' markup galois_raytrace.tix --include=Geometry'])
+	[hpc + ' markup ' + hpcsample + ' --include=Geometry'])
 test('hpc_markup_multi_002', normal, run_command, \
-	[hpc + ' markup galois_raytrace.tix --exclude=Geometry'])
+	[hpc + ' markup ' + hpcsample + ' --exclude=Geometry'])
 test('hpc_markup_multi_003', normal, run_command, \
-	[hpc + ' markup galois_raytrace.tix --fun-entry-count']) 
+	[hpc + ' markup ' + hpcsample + ' --fun-entry-count']) 
 
-test('hpc_show_multi_001', normal, run_command, [hpc + ' show galois_raytrace.tix'])
-test('hpc_show_multi_002', normal, run_command, [hpc + ' show galois_raytrace.tix --include=Geometry'])
+test('hpc_show_multi_001', normal, run_command, [hpc + ' show ' + hpcsample + ''])
+test('hpc_show_multi_002', normal, run_command, [hpc + ' show ' + hpcsample + ' --include=Geometry'])
 
 clean_o_hi()
