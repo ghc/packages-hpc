@@ -1,0 +1,12 @@
+Usage: hpc show [OPTION] .. <TIX_FILE> [<MODULE> [<MODULE> ..]]
+
+Options:
+
+    --exclude=[PACKAGE:][MODULE]  exclude MODULE and/or PACKAGE
+    --include=[PACKAGE:][MODULE]  include MODULE and/or PACKAGE
+    --srcdir=DIR                  path to source directory of .hs files
+                                  multi-use of srcdir possible
+    --hpcdir=DIR                  sub-directory that contains .mix files
+                                  default .hpc [rarely changed]
+    --output=FILE                 output FILE
+
