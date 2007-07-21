@@ -3,17 +3,18 @@
 #
 
 while($ARGV[0] =~ /^--/) {
-  if ($ARGV[0] =~ /--hpc=(.*)/) {
-    shift @ARGV;
-    $HPC = $1;       
+  $arg = shift @ARGV;
+  if ($arg =~ /--hpc=(.*)/) {
+    $HPC = $1;
   }
-  if ($ARGV[0] =~ /--report/) {
-    shift @ARGV;
-    $REPORT = 1;       
+  elsif ($arg =~ /--report/) {
+    $REPORT = 1;
   }
-  if ($ARGV[0] =~ /--exeext=(.*)/) {
-    shift @ARGV;
-    $exeext = $1;       
+  elsif ($arg =~ /--exeext=(.*)/) {
+    $exeext = $1;
+  }
+  else {
+    die "Bad arg: $arg"
   }
 }
 
