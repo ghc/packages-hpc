@@ -11,12 +11,16 @@ while($ARGV[0] =~ /^--/) {
     shift @ARGV;
     $REPORT = 1;       
   }
+  if ($ARGV[0] =~ /--exeext=(.*)/) {
+    shift @ARGV;
+    $exeext = $1;       
+  }
 }
 
 
 die "no option --hpc=* provided\n" if (!defined($HPC));
         
-$binary = $ARGV[0];
+$binary = $ARGV[0] . $exeext;
 
 system(@ARGV);
 print "\n\n";
