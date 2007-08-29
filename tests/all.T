@@ -14,7 +14,8 @@ hpc_args = ['perl hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc
 test('hpc001', normal, compile_and_run_with_prefix, hpc_args)
 
 # a prepackaged version of .hpc/*mix and hpc-sample.tix files.
-# This is what was created by WAY=normal from TEST=hpc001, hpc001.tix moved to hpc_sample.tix
+# This is created using 'make build-tix-tar', in this directory.
+
 runCmd("tar xf tixs.tar") 
 
 hpcsample = 'hpc_sample'
