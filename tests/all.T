@@ -9,7 +9,7 @@ for dir in os.path.split(getTestDir()):
      hpc = '../' + hpc 
 hpc = hpc + '/../utils/hpc/hpc';
 
-hpc_args = ['perl hpcrun.pl --clear --hpc=' + hpc,'-fhpc'];
+hpc_args = ['perl hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc,'-fhpc'];
 
 test('hpc001', normal, compile_and_run_with_prefix, hpc_args)
 
@@ -49,5 +49,3 @@ test('hpc_help_version', normal, run_command, [hpc + ' help version'])
 test('hpc_version', normal, run_command, [hpc + ' version'])
 
 test('hpc_bad_001', exit_code(1), run_command, [hpc + ' bad arguments'])
-
-test('hpc001', normal, compile_and_run_with_prefix, ['perl hpcrun.pl --hpc=' + hpc,'-fhpc'])

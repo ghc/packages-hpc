@@ -6,10 +6,9 @@ while($ARGV[0] =~ /^--/) {
   $arg = shift @ARGV;
   if ($arg =~ /--hpc=(.*)/) {
     $HPC = $1;
-  }
-  if ($ARGV[0] =~ /--report/) {
-    shift @ARGV;
-    $REPORT = 1;       
+  } 
+  elsif ($arg =~ /--clear/) {
+    $CLEAR = 1;       
   }
   elsif ($arg =~ /--exeext=(.*)/) {
     $exeext = $1;
@@ -18,7 +17,6 @@ while($ARGV[0] =~ /^--/) {
     die "Bad arg: $arg"
   }
 }
-
 
 die "no option --hpc=* provided\n" if (!defined($HPC));
         
