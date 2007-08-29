@@ -37,7 +37,7 @@ render (m,m') amb ls obj dep fov wid ht file
            then print ("BAD LENGTH",length vals,length rt_vals)
            else do {
                    ; let cmp = sum(zipWith (\ a b -> abs (a - b) * abs (a - b)) vals rt_vals)
-                   ; print $ if cmp == 0 then ("GOOD MATCH") else ("BAD MATCH:" ++ show cmp)
+                   ; print $ if cmp <= (length vals * 16) then ("GOOD MATCH") else ("BAD MATCH:" ++ show cmp)
                    }}
                    
   where
