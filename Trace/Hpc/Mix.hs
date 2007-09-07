@@ -30,6 +30,7 @@ import Data.Char
 -- in the list
 
 import Trace.Hpc.Util (HpcPos, insideHpcPos, Hash, HpcHash(..))
+import Trace.Hpc.Tix 
 
 -- | 'Mix' is the information about a modules static properties, like 
 -- location of Tix's in a file.
@@ -83,21 +84,23 @@ mixCreate dirName modName mix =
    writeFile (mixName dirName modName) (show mix)
 
 -- | Read a mix file.
-readMix :: [String] -- ^ Dir Names
-	-> String   -- ^ module Name
+readMix :: [String]   -- ^ Dir Names
+	-> TixModule  -- ^ module wanted
 	-> IO Mix
-readMix dirNames modName = do
+readMix dirNames mod = do
+   let modName = tixModuleName mod
    res <- sequence [ (do contents <- readFile (mixName dirName modName)
 		         case reads contents of
-			   [(r@Mix {},cs)] | all isSpace cs -> return $ Just r
+			   [(r@(Mix _ _ h _ _),cs)] 
+				| all isSpace cs 
+			       && h == tixModuleHash mod -> return $ Just r
 			   _ -> return $ Nothing) `catch` (\ _ -> return $ Nothing)			
 		   | dirName <- dirNames
 		   ] 
    case catMaybes res of
      [r] -> return r
-     xs@(_:_) -> error $ "found " ++ show(length xs) ++ " for " ++ modName ++ " in " ++ show dirNames
-     _        -> error $ "can not find " ++ modName ++ " in " ++ show dirNames
-	
+     xs@(_:_) -> error $ "found " ++ show(length xs) ++ " instances of " ++ modName ++ " in " ++ show dirNames
+     _        -> error $ "can not find " ++ modName ++ " in " ++ show dirNames	
 
 mixName :: FilePath -> String -> String
 mixName dirName name = dirName ++ "/" ++ name ++ ".mix"

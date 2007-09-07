@@ -15,6 +15,7 @@ module Trace.Hpc.Util
 
 import Data.List(foldl')
 import Data.Char (ord)
+import Data.Bits (xor)
 import Data.Word 
 
 -- | 'HpcPos' is an Hpc local rendition of a Span. 
@@ -92,12 +93,13 @@ instance HpcHash Bool where
   toHash False = 0
 
 instance HpcHash a => HpcHash [a] where
-  toHash xs = foldl' (\ h c -> toHash c + h * 37) 0 xs
+  toHash xs = foldl' (\ h c -> toHash c `hxor` (h * 33)) 5381 xs
 
 instance (HpcHash a,HpcHash b) => HpcHash (a,b) where
-  toHash (a,b) = toHash a * 37 + toHash b
+  toHash (a,b) = toHash a * 33 `hxor` toHash b
 
 instance HpcHash HpcPos where
   toHash (P a b c d) = Hash $ fromIntegral $ a * 0x1000000 + b * 0x10000 + c * 0x100 + d
 
-
+hxor :: Hash -> Hash -> Hash
+hxor (Hash x) (Hash y) = Hash $ x `xor` y
