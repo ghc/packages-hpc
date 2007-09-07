@@ -2,13 +2,7 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 		    compose(omit_ways(['ghci']),
 			    skip_if_fast)))
 
-# Set up the hpc common variable(s), including
-# a hack to find the true location of the hpc tools.
-hpc = config.top
-for dir in os.path.split(getTestDir()):
-   if dir != '.' and dir != '':
-     hpc = '../' + hpc 
-hpc = hpc + '/../utils/hpc/hpc';
+hpc = config.top + '/../utils/hpc/hpc';
 
 test('hpc_raytrace', \
 	skip_if_fast, \
