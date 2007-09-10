@@ -87,16 +87,16 @@ mixCreate dirName modName mix =
 readMix :: [String]   	    	    -- ^ Dir Names
 	-> Either String TixModule  -- ^ module wanted
 	-> IO Mix
-readMix dirNames mod = do
-   let modName = case mod of
+readMix dirNames mod' = do
+   let modName = case mod' of
 		    Left str -> str
 		    Right tix -> tixModuleName tix
    res <- sequence [ (do contents <- readFile (mixName dirName modName)
-		         print (mixName dirName modName,mod)
+		         print (mixName dirName modName,mod')
 		         case reads contents of
 			   [(r@(Mix _ _ h _ _),cs)] 
 				| all isSpace cs 
-			       && (case mod of
+			       && (case mod' of
 				     Left  _   -> True
 		                     Right tix -> h == tixModuleHash tix
 		                  ) -> return $ Just r
