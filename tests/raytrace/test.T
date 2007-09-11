@@ -7,7 +7,7 @@ hpc = config.top + '/../utils/hpc/hpc';
 test('hpc_raytrace', \
 	skip_if_fast, \
 	multimod_compile_and_run_with_prefix, \
-	['perl ../hpcrun.pl --clear --hpc=' + hpc, 'Main','-fhpc -package parsec'])
+	['perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc, 'Main','-fhpc -package parsec'])
 
 runCmd("cd " + getTestDir() + " && tar xf tixs.tar")
 
