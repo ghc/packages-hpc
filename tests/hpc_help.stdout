@@ -1,7 +1,7 @@
 Usage: hpc COMMAND ...
 
 Commands:
-  help        Display help for hpc or a single command.
+  help        Display help for hpc or a single command
 Reporting Coverage:
   report      Output textual report about program coverage
   markup      Markup Haskell source with program coverage
