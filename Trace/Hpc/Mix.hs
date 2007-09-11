@@ -92,7 +92,6 @@ readMix dirNames mod' = do
 		    Left str -> str
 		    Right tix -> tixModuleName tix
    res <- sequence [ (do contents <- readFile (mixName dirName modName)
-		         print (mixName dirName modName,mod')
 		         case reads contents of
 			   [(r@(Mix _ _ h _ _),cs)] 
 				| all isSpace cs 
