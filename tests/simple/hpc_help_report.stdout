@@ -1,4 +1,6 @@
 Usage: hpc report [OPTION] .. <TIX_FILE> [<MODULE> [<MODULE> ..]]
+Output textual report about program coverage
+
 
 Options:
 

@@ -1,5 +1,7 @@
 Error: no .tix file or executable name specified
 Usage: hpc markup [OPTION] .. <TIX_FILE> [<MODULE> [<MODULE> ..]]
+Markup Haskell source with program coverage
+
 
 Options:
 

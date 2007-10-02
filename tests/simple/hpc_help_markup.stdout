@@ -1,4 +1,6 @@
 Usage: hpc markup [OPTION] .. <TIX_FILE> [<MODULE> [<MODULE> ..]]
+Markup Haskell source with program coverage
+
 
 Options:
 

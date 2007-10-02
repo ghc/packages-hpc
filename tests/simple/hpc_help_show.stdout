@@ -1,4 +1,6 @@
 Usage: hpc show [OPTION] .. <TIX_FILE> [<MODULE> [<MODULE> ..]]
+Show .tix file in readable, verbose format
+
 
 Options:
 

@@ -1,5 +1,7 @@
 Error: could not read .tix file : hpc001.hs
 Usage: hpc show [OPTION] .. <TIX_FILE> [<MODULE> [<MODULE> ..]]
+Show .tix file in readable, verbose format
+
 
 Options:
 

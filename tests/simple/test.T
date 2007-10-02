@@ -45,4 +45,27 @@ test('hpc_show_error_002', exit_code(1), run_command, [hpc + ' show hpc001.hs'])
 test('hpc_help_version', normal, run_command, [hpc + ' help version'])
 test('hpc_version', normal, run_command, [hpc + ' version'])
 
+test('hpc_help_draft', normal, run_command, [hpc + ' help draft'])
+test('hpc_draft', normal, run_command, [hpc + ' draft ' + hpcsample + '.tix'])
+
+test('hpc_help_overlay', normal, run_command, [hpc + ' help overlay'])
+test('hpc_overlay', normal, run_command, 
+			[     hpc + ' overlay sample_overlay.ovr > sample_overlay.tix' +
+			';  cat sample_overlay.tix ' +
+			';' + hpc + ' combine ' + hpcsample + '.tix sample_overlay.tix > total.tix' + 
+			';' + hpc + ' report total.tix' +
+			'']);
+test('hpc_overlay2', normal, run_command, 
+			[     hpc + ' overlay sample_overlay.ovr --output=sample_overlay.tix' +
+			';  cat sample_overlay.tix ' +
+			';' + hpc + ' combine ' + hpcsample + '.tix sample_overlay.tix --output=total.tix' + 
+			';' + hpc + ' report total.tix' +
+			'']);
+test('hpc_hand_overlay', normal, run_command, 
+			[     hpc + ' overlay hand_overlay.ovr --output=sample_overlay.tix' +
+			';  cat sample_overlay.tix ' +
+			';' + hpc + ' combine ' + hpcsample + '.tix sample_overlay.tix --output=total.tix' + 
+			';' + hpc + ' report total.tix' +
+			'']);
+
 test('hpc_bad_001', exit_code(1), run_command, [hpc + ' bad arguments'])

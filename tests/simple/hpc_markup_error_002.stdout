@@ -1,5 +1,7 @@
 Error: unable to find tix file for: hpc001.hs
 Usage: hpc markup [OPTION] .. <TIX_FILE> [<MODULE> [<MODULE> ..]]
+Markup Haskell source with program coverage
+
 
 Options:
 
