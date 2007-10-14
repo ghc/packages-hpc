@@ -17,6 +17,13 @@ main = do
   t <- case () of
     _ | otherwoz -> return "Hello"
     _             -> error "Bad Thing Happened"
+  t <- case () of
+    _ | otherwise -> return "Hello"
+    _              -> error "Bad Thing Happened"
+  t <- case () of
+    _ | otherwise 
+      , False      -> error "Bad Thing Happened"
+    _              -> return "Hello"
   print t
   print foo2
 
