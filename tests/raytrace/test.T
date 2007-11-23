@@ -3,11 +3,12 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 			    skip_if_fast)))
 
 hpc = config.top + '/../utils/hpc/hpc';
+hpc_prefix = 'perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc, 'Main'
 
 test('hpc_raytrace', \
-	skip_if_fast, \
-	multimod_compile_and_run_with_prefix, \
-	['perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc, 'Main','-fhpc -package parsec'])
+	compose(skip_if_fast, cmd_prefix(hpc_prefix)), \
+	multimod_compile_and_run, \
+	['Main','-fhpc -package parsec'])
 
 runCmd("cd " + getTestDir() + " && tar xf tixs.tar")
 

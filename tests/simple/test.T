@@ -5,9 +5,9 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 # Set up the hpc common variable(s).
 hpc = config.top + '/../utils/hpc/hpc'
 
-hpc_args = ['perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc,'-fhpc'];
+hpc_prefix = 'perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc;
 
-test('hpc001', normal, compile_and_run_with_prefix, hpc_args)
+test('hpc001', cmd_prefix(hpc_prefix), compile_and_run, ['-fhpc'])
 
 # a prepackaged version of .hpc/*mix and hpc-sample.tix files.
 # This is created using 'make build-tix-tar', in this directory.

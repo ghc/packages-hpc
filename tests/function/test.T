@@ -5,7 +5,7 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 # Set up the hpc common variable(s).
 hpc = config.top + '/../utils/hpc/hpc'
 
-hpc_args = ['perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc,'-fhpc'];
+hpc_prefix = 'perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc;
 
-test('tough', normal, compile_and_run_with_prefix, hpc_args)
+test('tough', cmd_prefix(hpc_prefix), compile_and_run, ['-fhpc'])
 
