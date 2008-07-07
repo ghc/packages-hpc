@@ -5,13 +5,30 @@ module Trace.Hpc.Reflect
   , updateTix 
   ) where
 
+import Trace.Hpc.Tix
+
+#if __GLASGOW_HASKELL__ < 608
+
+-- Older GHCs don't have the info in the header files for the real
+-- contents of this module to compile
+
+clearTix :: IO ()
+clearTix = error "clearTix not defined for GHC < 6.8"
+
+examineTix :: IO Tix
+examineTix = error "examineTix not defined for GHC < 6.8"
+
+updateTix :: Tix -> IO ()
+updateTix = error "updateTix not defined for GHC < 6.8"
+
+#else
+
 import Foreign.C.String
 import Foreign.Marshal.Array
 import Foreign.Ptr
 import Foreign.Storable ( Storable(..) )
 import Data.Word 
 import Data.Int
-import Trace.Hpc.Tix
 import Trace.Hpc.Util
 import System.IO.Unsafe
 
@@ -73,3 +90,6 @@ updateTix (Tix modTixes)
 		  else True
 		]
       return ()
+
+#endif
+
