@@ -15,7 +15,7 @@ HPC   = $(HPCDIR)/hpc-std
 #   % cd $ROOT/utils/hpc
 # It assumes you have make a copy of hpc that
 #  is not compiled with -fhpc, and called it hpc-std
-#   % make clean ; make boot ; make ; mv hpc hpc-std
+#   %  make clean ; make boot ; make ; mv hpc-inplace hpc-std
 # It assumes that the utils/hpc has been compiled with 
 #   % make clean ; make boot ; make UseStage1=YES EXTRA_HC_OPTS=-fhpc
 #
@@ -32,7 +32,7 @@ hpc-tool-coverage-clean::
 
 hpc-tool-coverage::
 	$(HPC) overlay hpc.ovr --output=$(HPC_EXC_TIX) --srcdir=$(HPCDIR)
-	$(HPC) sum $(shell find . -name 'hpc.tix' -print) $(HPC_EXC_TIX) \
+	$(HPC) sum $(shell find . -name 'hpc-inplace.tix' -print) $(HPC_EXC_TIX) \
 			--output=$(HPC_ALL_TIX)  --union
 	date							    >> $(COVERAGE_OUT)
 	$(HPC) report $(HPC_ALL_TIX) --srcdir=$(HPCDIR) --xml-output    >> $(COVERAGE_OUT)

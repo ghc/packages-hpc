@@ -3,7 +3,7 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 			    skip_if_fast)))
 
 # Set up the hpc common variable(s).
-hpc = config.top + '/../utils/hpc/hpc'
+hpc = config.top + '/../utils/hpc/hpc-inplace'
 
 hpc_prefix = 'perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc;
 
