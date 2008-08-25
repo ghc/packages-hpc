@@ -20,7 +20,7 @@ Library
         Trace.Hpc.Reflect
     extensions: CPP
     if flag(small_base)
-        Build-Depends: base       >= 3   && < 4,
+        Build-Depends: base       >= 3   && < 5,
                        directory  >= 1   && < 1.1,
                        old-time   >= 1   && < 1.1,
                        containers >= 0.1 && < 0.2
