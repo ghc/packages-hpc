@@ -2,7 +2,7 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 		    compose(omit_ways(['ghci']),
 			    skip_if_fast)))
 
-hpc = config.top + '/../utils/hpc/hpc-inplace';
+hpc = config.top + '/../utils/hpc/install-inplace/bin/hpc'
 hpc_prefix = 'perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc;
 
 test('hpc_raytrace', \
