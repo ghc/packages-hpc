@@ -6,7 +6,7 @@ hpc = config.top + '/../utils/hpc/install-inplace/bin/hpc'
 hpc_prefix = 'perl ../hpcrun.pl --clear --exeext=' + config.exeext + ' --hpc=' + hpc;
 
 test('hpc_raytrace', \
-	compose(skip_if_fast, cmd_prefix(hpc_prefix)), \
+	[ skip_if_fast, cmd_prefix(hpc_prefix), reqlib('parsec') ], \
 	multimod_compile_and_run, \
 	['Main','-fhpc -package parsec'])
 
