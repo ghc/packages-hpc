@@ -1,6 +1,6 @@
 
 test('hpc_ghc_ghci',
-     [broken(1779),
+     [expect_broken(1779),
       only_ways(['normal']),
       only_compiler_types(['ghc'])],
      run_command,
