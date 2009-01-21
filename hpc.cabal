@@ -4,10 +4,15 @@ license:      BSD3
 license-file: LICENSE
 author:       Andy Gill
 maintainer:   libraries@haskell.org
+bug-reports: http://hackage.haskell.org/trac/ghc/newticket?component=Code%20Coverage
 category:     Control
 synopsis:     Code Coverage Library for Haskell
 build-type:   Simple
 Cabal-Version: >= 1.2
+
+source-repository head
+    type:     darcs
+    location: http://darcs.haskell.org/packages/hpc/
 
 Flag small_base
   Description: Choose the new smaller, split-up base package.
