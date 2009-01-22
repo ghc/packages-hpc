@@ -8,7 +8,7 @@ bug-reports: http://hackage.haskell.org/trac/ghc/newticket?component=Code%20Cove
 category:     Control
 synopsis:     Code Coverage Library for Haskell
 build-type:   Simple
-Cabal-Version: >= 1.2
+Cabal-Version: >= 1.6
 
 source-repository head
     type:     darcs
