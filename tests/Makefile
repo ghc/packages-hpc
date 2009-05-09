@@ -6,9 +6,6 @@ TOP=../../../testsuite
 include $(TOP)/mk/boilerplate.mk
 include $(TOP)/mk/test.mk
 
-HPCDIR=$(TOP)/../utils/hpc
-HPC   = $(HPCDIR)/hpc-std
-
 #
 # This is measuring coverage of the hpc tool itself.
 #  In the hpc directory 
@@ -31,13 +28,13 @@ hpc-tool-coverage-clean::
 	find . -name 'hpc.tix' -print | xargs rm -f
 
 hpc-tool-coverage::
-	$(HPC) overlay hpc.ovr --output=$(HPC_EXC_TIX) --srcdir=$(HPCDIR)
+	$(HPC) overlay hpc.ovr --output=$(HPC_EXC_TIX)
 	$(HPC) sum $(shell find . -name 'hpc-inplace.tix' -print) $(HPC_EXC_TIX) \
 			--output=$(HPC_ALL_TIX)  --union
 	date							    >> $(COVERAGE_OUT)
-	$(HPC) report $(HPC_ALL_TIX) --srcdir=$(HPCDIR) --xml-output    >> $(COVERAGE_OUT)
+	$(HPC) report $(HPC_ALL_TIX) --xml-output    >> $(COVERAGE_OUT)
 	echo OMIT: $(HPCTOOLS_BORING)				   >> $(COVERAGE_OUT)
-	$(HPC) report $(HPC_ALL_TIX) --srcdir=$(HPCDIR) --xml-output $(BORING_FLAGS) \
+	$(HPC) report $(HPC_ALL_TIX) --xml-output $(BORING_FLAGS) \
 									>> $(COVERAGE_OUT)
-	$(HPC) markup $(HPC_ALL_TIX) --srcdir=$(HPCDIR) $(BORING_FLAGS) --destdir=html 
+	$(HPC) markup $(HPC_ALL_TIX) $(BORING_FLAGS) --destdir=html 
 

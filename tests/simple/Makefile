@@ -6,9 +6,6 @@ TOP=../../../../testsuite
 include $(TOP)/mk/boilerplate.mk
 include $(TOP)/mk/test.mk
 
-HPCDIR=$(TOP)/../utils/hpc
-HPC   = $(HPCDIR)/hpc-std
-
 build-tix-tar::
 	rm -Rf .hpc hpc001.o a.out
 	$(TOP)/../compiler/ghc-inplace -fhpc hpc001.hs
