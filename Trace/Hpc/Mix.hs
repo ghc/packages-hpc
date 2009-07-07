@@ -20,7 +20,6 @@ module Trace.Hpc.Mix
 
 import System.Time (ClockTime(..))
 import System.Directory (getModificationTime)
-import System.IO   (FilePath)
 import Data.Maybe (catMaybes)
 import Data.Tree
 import Data.Char
