@@ -28,7 +28,6 @@ import Foreign.Marshal.Array
 import Foreign.Ptr
 import Foreign.Storable ( Storable(..) )
 import Data.Word 
-import Data.Int
 import Trace.Hpc.Util
 import System.IO.Unsafe
 
