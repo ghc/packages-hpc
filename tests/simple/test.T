@@ -9,7 +9,7 @@ test('hpc001', cmd_prefix(hpc_prefix), compile_and_run, ['-fhpc'])
 # a prepackaged version of .hpc/*mix and hpc-sample.tix files.
 # This is created using 'make build-tix-tar', in this directory.
 
-runCmd("cd " + getTestDir() + " && tar xf tixs.tar")
+runCmd("cd " + in_testdir('') + " && tar xf tixs.tar")
 
 hpcsample = 'hpc_sample'
 

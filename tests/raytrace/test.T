@@ -9,7 +9,7 @@ test('hpc_raytrace', \
 	multimod_compile_and_run, \
 	['Main','-fhpc -package parsec'])
 
-runCmd("cd " + getTestDir() + " && tar xf tixs.tar")
+runCmd("cd " + in_testdir('') + " && tar xf tixs.tar")
 
 hpcsample = 'hpc_sample'
 
