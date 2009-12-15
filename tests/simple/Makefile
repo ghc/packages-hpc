@@ -8,7 +8,7 @@ include $(TOP)/mk/test.mk
 
 build-tix-tar::
 	rm -Rf .hpc hpc001.o a.out
-	$(TOP)/../compiler/ghc-inplace -fhpc hpc001.hs
+	'$(TEST_HC)' -fhpc hpc001.hs
 	./a.out
 	mv a.out.tix hpc_sample.tix
 	tar cf tixs.tar hpc_sample.tix .hpc
