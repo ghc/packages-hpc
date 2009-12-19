@@ -32,4 +32,6 @@ test('hpc_show_multi_001', normal, run_command,
 test('hpc_show_multi_002', normal, run_command,
      [config.hpc + ' show ' + hpcsample + ' --include=Geometry'])
 
-clean_o_hi()
+# XXX We used to do clean_o_hi(), but that doesn't work any more
+# Fix cleaning properly
+
