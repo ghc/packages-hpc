@@ -1,0 +1,1 @@
+Mix "Main.hs" 1188362633 601114699 1 [(15:29-15:40,ExpBox False),(15:20-15:40,ExpBox False),(16:32-16:34,ExpBox False),(16:22-16:35,ExpBox False),(16:13-16:35,ExpBox False),(15:8-17:11,ExpBox False),(15:1-17:11,TopLevelBox ["main"])]
