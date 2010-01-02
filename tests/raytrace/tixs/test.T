@@ -5,23 +5,23 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 hpcsample = 'hpc_sample'
 
 test('hpc_report_multi_001', normal, run_command, \
-	[config.hpc + ' report ' + hpcsample + ' --include=Geometry --per-module'])
+	["'" + config.hpc + "' report " + hpcsample + " --include=Geometry --per-module"])
 test('hpc_report_multi_002', normal, run_command, \
-	[config.hpc + ' report ' + hpcsample + ' --exclude=Geometry --per-module'])
+	["'" + config.hpc + "' report " + hpcsample + " --exclude=Geometry --per-module"])
 test('hpc_report_multi_003', normal, run_command, \
-	[config.hpc + ' report ' + hpcsample + ' --include=Geometry --per-module --decl-list'])
+	["'" + config.hpc + "' report " + hpcsample + " --include=Geometry --per-module --decl-list"])
 
 test('hpc_markup_multi_001', normal, run_command, \
-	[config.hpc + ' markup --srcdir=../ ' + hpcsample + ' --include=Geometry'])
+	["'" + config.hpc + "' markup --srcdir=../ " + hpcsample + " --include=Geometry"])
 test('hpc_markup_multi_002', normal, run_command, \
-	[config.hpc + ' markup --srcdir=../ ' + hpcsample + ' --exclude=Geometry'])
+	["'" + config.hpc + "' markup --srcdir=../ " + hpcsample + " --exclude=Geometry"])
 test('hpc_markup_multi_003', normal, run_command, \
-	[config.hpc + ' markup --srcdir=../ ' + hpcsample + ' --fun-entry-count'])
+	["'" + config.hpc + "' markup --srcdir=../ " + hpcsample + " --fun-entry-count"])
 
 test('hpc_show_multi_001', normal, run_command,
-     [config.hpc + ' show ' + hpcsample + ''])
+     ["'" + config.hpc + "' show " + hpcsample])
 test('hpc_show_multi_002', normal, run_command,
-     [config.hpc + ' show ' + hpcsample + ' --include=Geometry'])
+     ["'" + config.hpc + "' show " + hpcsample + " --include=Geometry"])
 
 # XXX We used to do clean_o_hi(), but that doesn't work any more
 # Fix cleaning properly
