@@ -22,15 +22,15 @@ die "no option --hpc=* provided\n" if (!defined($HPC));
         
 $binary = $ARGV[0] . $exeext;
 
-system("rm -f $binary.tix") if (defined($CLEAR));
+unlink "$binary.tix" if (defined($CLEAR));
 
-system(@ARGV);
+system @ARGV;
 print "\n\n";
-system("$HPC report $binary.tix");
+system ($HPC, "report", "$binary.tix");
 print "\n\n";
-system("$HPC report $binary.tix --per-module");
+system ($HPC, "report", "$binary.tix", "--per-module");
 print "\n\n";
-open(MARKUP,"$HPC markup $binary.tix| ");
+open(MARKUP, "-|", $HPC, "markup", "$binary.tix");
 while(<MARKUP>) {
   my $line = $_;
   print $line;
