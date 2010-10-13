@@ -9,5 +9,5 @@ include $(TOP)/mk/test.mk
 hpc_ghc_ghci:
 	rm -f A.o A.hi
 	'$(TEST_HC)' -fhpc -c A.hs
-	echo b | '$(TEST_HC)' -v0 --interactive B.hs
+	echo b | '$(TEST_HC)' -ignore-dot-ghci -v0 --interactive B.hs
 
