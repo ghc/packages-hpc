@@ -1,4 +1,4 @@
-{-# LANGUAGE CPP #-}
+{-# LANGUAGE CPP, ForeignFunctionInterface #-}
 module Trace.Hpc.Reflect
   ( clearTix
   , examineTix
