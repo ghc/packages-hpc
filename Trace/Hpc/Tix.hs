@@ -9,7 +9,7 @@ module Trace.Hpc.Tix(Tix(..), TixModule(..),
 		     readTix, writeTix, getTixFileName) where
 
 import Data.List (isSuffixOf)
-import Trace.Hpc.Util(Hash)
+import Trace.Hpc.Util (Hash, catchIO)
 
 -- 'Tix ' is the storage format for our dynamic imformation about what
 -- boxes are ticked.
@@ -34,11 +34,11 @@ tixModuleTixs (TixModule  _ _ _ tixs) = tixs
 
 -- read a Tix File.
 readTix :: String
-	-> IO (Maybe Tix)
-readTix tix_filename = 
-  catch (do contents <- readFile $ tix_filename
-	    return $ Just $ read contents)
-	(\ _ -> return $ Nothing)
+        -> IO (Maybe Tix)
+readTix tix_filename =
+  catchIO (do contents <- readFile $ tix_filename
+              return $ Just $ read contents)
+          (\ _ -> return $ Nothing)
 
 -- write a Tix File.
 writeTix :: String 

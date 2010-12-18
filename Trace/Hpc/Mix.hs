@@ -28,7 +28,7 @@ import Data.Char
 -- been introduced in that module, accessed by tick-number position
 -- in the list
 
-import Trace.Hpc.Util (HpcPos, insideHpcPos, Hash, HpcHash(..))
+import Trace.Hpc.Util (HpcPos, insideHpcPos, Hash, HpcHash(..), catchIO)
 import Trace.Hpc.Tix
 
 -- | 'Mix' is the information about a modules static properties, like
@@ -98,7 +98,7 @@ readMix dirNames mod' = do
                                      Left  _   -> True
                                      Right tix -> h == tixModuleHash tix
                                   ) -> return $ Just r
-                           _ -> return $ Nothing) `catch` (\ _ -> return $ Nothing)
+                           _ -> return $ Nothing) `catchIO` (\ _ -> return $ Nothing)
                    | dirName <- dirNames
                    ]
    case catMaybes res of

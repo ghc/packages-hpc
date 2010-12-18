@@ -11,8 +11,10 @@ module Trace.Hpc.Util
        , insideHpcPos
        , HpcHash(..)
        , Hash
+       , catchIO
        ) where
 
+import qualified Control.Exception as Exception
 import Data.List(foldl')
 import Data.Char (ord)
 import Data.Bits (xor)
@@ -103,3 +105,7 @@ instance HpcHash HpcPos where
 
 hxor :: Hash -> Hash -> Hash
 hxor (Hash x) (Hash y) = Hash $ x `xor` y
+
+catchIO :: IO a -> (Exception.IOException -> IO a) -> IO a
+catchIO = Exception.catch
+
