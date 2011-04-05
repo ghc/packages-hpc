@@ -11,8 +11,8 @@ build-type:   Simple
 Cabal-Version: >= 1.6
 
 source-repository head
-    type:     darcs
-    location: http://darcs.haskell.org/packages/hpc/
+    type:     git
+    location: http://darcs.haskell.org/packages/hpc.git/
 
 Flag small_base
   Description: Choose the new smaller, split-up base package.
