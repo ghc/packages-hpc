@@ -12,11 +12,11 @@ test('hpc_report_multi_003', normal, run_command, \
 	["'" + config.hpc + "' report " + hpcsample + " --include=Geometry --per-module --decl-list"])
 
 test('hpc_markup_multi_001', normal, run_command, \
-	["'" + config.hpc + "' markup --srcdir=../ " + hpcsample + " --include=Geometry"])
+        ["'" + config.hpc + "' markup --srcdir=.. --hpcdir=tixs/.hpc " + hpcsample + " --include=Geometry"])
 test('hpc_markup_multi_002', normal, run_command, \
-	["'" + config.hpc + "' markup --srcdir=../ " + hpcsample + " --exclude=Geometry"])
+	["'" + config.hpc + "' markup --srcdir=.. --hpcdir=tixs/.hpc " + hpcsample + " --exclude=Geometry"])
 test('hpc_markup_multi_003', normal, run_command, \
-	["'" + config.hpc + "' markup --srcdir=../ " + hpcsample + " --fun-entry-count"])
+	["'" + config.hpc + "' markup --srcdir=.. --hpcdir=tixs/.hpc " + hpcsample + " --fun-entry-count"])
 
 test('hpc_show_multi_001', normal, run_command,
      ["'" + config.hpc + "' show " + hpcsample])
