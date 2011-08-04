@@ -1,10 +1,12 @@
-{-# OPTIONS -cpp #-}
+#if __GLASGOW_HASKELL__ >= 701
+{-# LANGUAGE Trustworthy #-}
+#endif
 ---------------------------------------------------------------
 -- Colin Runciman and Andy Gill, June 2006
 ---------------------------------------------------------------
 
--- |Datatypes and file-access routines for the per-module (.mix)
---  indexes used by Hpc.
+-- | Datatypes and file-access routines for the per-module (.mix)
+-- indexes used by Hpc.
 module Trace.Hpc.Mix
         ( Mix(..)
         , MixEntry
