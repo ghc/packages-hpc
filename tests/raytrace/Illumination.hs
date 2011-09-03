@@ -39,7 +39,7 @@ render (m,m') amb ls obj dep fov wid ht file
                    ; let cmp = sum(zipWith (\ a b -> abs (a - b) * abs (a - b)) vals rt_vals)
                    ; print $ if cmp <= (length vals * 16) then ("GOOD MATCH") else ("BAD MATCH:" ++ show cmp)
                    }}
-                   
+
   where
     debugging = return ()
 {-
@@ -73,7 +73,7 @@ render (m,m') amb ls obj dep fov wid ht file
     superSample (y, x) col = avg $ col:
       [ illumination cxt (start, pixel (fromIntegral x - 0.5 + xd) (fromIntegral y - 0.5 + yd))
       | (xd, yd) <- [(-0.333, 0.0), (0.333, 0.0), (0.0, -0.333), (0.0, 0.333)]
-      ] 
+      ]
 
 avg cs = divN (fromIntegral (length cs)) (uncolor (sumCC cs))
   where divN n (r,g,b) = color (r / n) (g / n) (b / n)
@@ -129,7 +129,7 @@ showBitmapA wid ht arr
 showBitmap :: Int -> Int ->[[Color]] -> String
 showBitmap wid ht pss
 -- type of assert  | length pss == ht && all (\ ps -> length ps == wid) pss
-  = header ++ concat [[scalePixel r,scalePixel g,scalePixel b] 
+  = header ++ concat [[scalePixel r,scalePixel g,scalePixel b]
                       | ps <- pss, (r,g,b) <- map uncolor ps]
   where
     header = "P6\n#Galois\n" ++ show wid ++ " " ++ show ht ++ "\n255\n"
@@ -154,7 +154,7 @@ scalePixel' p = floor (clampf p * 255)
 -- Lights
 
 data Light = Light Vector Color
-           | PointLight Point Color 
+           | PointLight Point Color
            | SpotLight Point Point Color Radian Double
    deriving Show
 
@@ -194,7 +194,7 @@ unobscure org obj normV (SpotLight pos at color cutoff exp)
             vec'  = pos `subPP` at
             angle = acos (normalize vec `dot` (normalize vec'))
 
-            asp   = normalize (at `subPP` pos)            
+            asp   = normalize (at `subPP` pos)
             qsp   = normalize (org `subPP` pos)
             is    = attenuate vec (((asp `dot` qsp) ** exp) `multSC` color)
 
