@@ -1,6 +1,7 @@
 
 test('hpc_ghc_ghci',
-     [only_ways(['normal']),
+     [extra_clean(['A.hi', 'A.o', '.hpc/A.mix', '.hpc/']),
+      only_ways(['normal']),
       only_compiler_types(['ghc']),
       if_compiler_profiled(skip),
       req_interp],
