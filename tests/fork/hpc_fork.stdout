@@ -1,6 +1,4 @@
 ()
-"Hello"
-"World"
 
 
  53% expressions used (7/13)
@@ -39,12 +37,13 @@ span.spaces    { background: white }
 <span class="lineno">    1 </span>module Main where
 <span class="lineno">    2 </span>
 <span class="lineno">    3 </span>import System.Posix.Process
-<span class="lineno">    4 </span>
-<span class="lineno">    5 </span><span class="decl"><span class="istickedoff">main = do</span>
-<span class="lineno">    6 </span><span class="spaces">  </span><span class="istickedoff">pid1 &lt;- forkProcess $ <span class="nottickedoff">do print &quot;Hello&quot;</span></span>
-<span class="lineno">    7 </span><span class="spaces">  </span><span class="istickedoff">pid2 &lt;- forkProcess $ <span class="nottickedoff">do print &quot;World&quot;</span></span>
-<span class="lineno">    8 </span><span class="spaces">  </span><span class="istickedoff">print ()</span></span>
-<span class="lineno">    9 </span>
+<span class="lineno">    4 </span>import Control.Concurrent
+<span class="lineno">    5 </span>
+<span class="lineno">    6 </span><span class="decl"><span class="istickedoff">main = do</span>
+<span class="lineno">    7 </span><span class="spaces">  </span><span class="istickedoff">pid1 &lt;- forkProcess $ <span class="nottickedoff">do threadDelay 100000</span></span>
+<span class="lineno">    8 </span><span class="spaces">  </span><span class="istickedoff">pid2 &lt;- forkProcess $ <span class="nottickedoff">do threadDelay 100000</span></span>
+<span class="lineno">    9 </span><span class="spaces">  </span><span class="istickedoff">print ()</span></span>
+<span class="lineno">   10 </span>
 
 </pre>
 </html>
