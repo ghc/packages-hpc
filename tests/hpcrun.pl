@@ -30,7 +30,7 @@ system ($HPC, "report", "$binary.tix");
 print "\n\n";
 system ($HPC, "report", "$binary.tix", "--per-module");
 print "\n\n";
-open(MARKUP, "-|", $HPC, "markup", "$binary.tix");
+open(MARKUP, "-|", "$HPC markup $binary.tix");
 while(<MARKUP>) {
   my $line = $_;
   print $line;
