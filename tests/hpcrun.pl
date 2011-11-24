@@ -22,6 +22,9 @@ die "no option --hpc=* provided\n" if (!defined($HPC));
         
 $binary = $ARGV[0] . $exeext;
 
+# get the basename: needed for the test function/subdir/tough2
+$binary =~ s/^.*\/([^\/]*)$/$1/;
+
 unlink "$binary.tix" if (defined($CLEAR));
 
 system @ARGV;
