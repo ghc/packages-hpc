@@ -27,7 +27,7 @@ Library
     if flag(small_base)
         Build-Depends: base       >= 3   && < 5,
                        directory  >= 1   && < 1.2,
-                       old-time   >= 1   && < 1.1,
+                       old-time   >= 1   && < 1.2,
                        containers >= 0.1 && < 0.5
     else
         Build-Depends: base < 3
