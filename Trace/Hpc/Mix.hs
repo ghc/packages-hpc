@@ -14,15 +14,13 @@ module Trace.Hpc.Mix
         , CondBox(..)
         , mixCreate
         , readMix
-        , Trace.Hpc.Mix.getModificationTime
         , createMixEntryDom
         , MixEntryDom
         )
   where
 
-import System.Time (ClockTime(..))
-import System.Directory (getModificationTime)
 import Data.Maybe (catMaybes)
+import Data.Time
 import Data.Tree
 import Data.Char
 
@@ -41,15 +39,11 @@ import Trace.Hpc.Tix
 
 data Mix = Mix
              FilePath           -- location of original file
-             Integer            -- time (in seconds) of original file's last update, since 1970.
+             UTCTime            -- time of original file's last update
              Hash               -- hash of mix entry + timestamp
              Int                -- tab stop value.
              [MixEntry]         -- entries
         deriving (Show,Read)
-
--- We would rather use ClockTime in Mix, but ClockTime has no Read instance in 6.4 and before,
--- but does in 6.6. Definining the instance for ClockTime here is the Wrong Thing to do,
--- because if some other program also defined that instance, we will not be able to compile.
 
 type MixEntry = (HpcPos, BoxLabel)
 
@@ -110,13 +104,6 @@ readMix dirNames mod' = do
 
 mixName :: FilePath -> String -> String
 mixName dirName name = dirName ++ "/" ++ name ++ ".mix"
-
--- | Get modification time of a file.
-
-getModificationTime :: FilePath -> IO Integer
-getModificationTime file = do
-  (TOD sec _) <- System.Directory.getModificationTime file
-  return $ sec
 
 ------------------------------------------------------------------------------
 
