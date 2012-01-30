@@ -37,20 +37,26 @@ test('hpc_help_draft', normal, run_command, ["'" + config.hpc + "' help draft"])
 test('hpc_draft', normal, run_command, ["'" + config.hpc + "' draft " + hpcsample + ".tix"])
 
 test('hpc_help_overlay', normal, run_command, ["'" + config.hpc + "' help overlay"])
-test('hpc_overlay', normal, run_command,
-			[     "'" + config.hpc + "' overlay sample_overlay.ovr > sample_overlay.tix" +
-			";  cat sample_overlay.tix " +
-			";'" + config.hpc + "' combine " + hpcsample + ".tix sample_overlay.tix > total.tix" +
-			";'" + config.hpc + "' report total.tix"]);
-test('hpc_overlay2', normal, run_command,
-			[     "'" + config.hpc + "' overlay sample_overlay.ovr --output=sample_overlay.tix" +
-			";  cat sample_overlay.tix " +
-			";'" + config.hpc + "' combine " + hpcsample + ".tix sample_overlay.tix --output=total.tix" +
-			";'" + config.hpc + "' report total.tix"]);
-test('hpc_hand_overlay', normal, run_command,
-			[     "'" + config.hpc + "' overlay hand_overlay.ovr --output=sample_overlay.tix" +
-			";  cat sample_overlay.tix " +
-			";'" + config.hpc + "' combine " + hpcsample + ".tix sample_overlay.tix --output=total.tix" +
-			";'" + config.hpc + "' report total.tix"]);
+
+test('hpc_overlay', [ extra_clean(['sample_overlay1.tix', 'total1.tix']) ],
+                     run_command,
+                       [     "'" + config.hpc + "' overlay sample_overlay.ovr > sample_overlay1.tix" +
+                        ";  cat sample_overlay1.tix " +
+                        ";'" + config.hpc + "' combine " + hpcsample + ".tix sample_overlay1.tix > total1.tix" +
+                        ";'" + config.hpc + "' report total1.tix"]);
+
+test('hpc_overlay2', [ extra_clean(['sample_overlay2.tix', 'total2.tix']) ],
+                     run_command,
+                        [     "'" + config.hpc + "' overlay sample_overlay.ovr --output=sample_overlay2.tix" +
+                        ";  cat sample_overlay2.tix " +
+                        ";'" + config.hpc + "' combine " + hpcsample + ".tix sample_overlay2.tix --output=total2.tix" +
+                        ";'" + config.hpc + "' report total2.tix"]);
+
+test('hpc_hand_overlay', [ extra_clean(['sample_overlay3.tix', 'total3.tix']) ],
+                         run_command,
+                        [     "'" + config.hpc + "' overlay hand_overlay.ovr --output=sample_overlay3.tix" +
+                        ";  cat sample_overlay3.tix " +
+                        ";'" + config.hpc + "' combine " + hpcsample + ".tix sample_overlay3.tix --output=total3.tix" +
+                        ";'" + config.hpc + "' report total3.tix"]);
 
 test('hpc_bad_001', exit_code(1), run_command, ["'" + config.hpc + "' bad arguments"])
