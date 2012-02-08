@@ -15,7 +15,7 @@
      100% qualifiers (0/0)
  41% alternatives used (5/12)
 100% local declarations used (5/5)
- 48% top-level declarations used (17/35)
+ 41% top-level declarations used (17/41)
 -----<module Data>-----
  39% expressions used (254/646)
   0% boolean coverage (0/4)
@@ -24,7 +24,7 @@
      100% qualifiers (0/0)
   3% alternatives used (2/51)
 100% local declarations used (0/0)
- 24% top-level declarations used (6/25)
+ 18% top-level declarations used (10/53)
 -----<module Eval>-----
  57% expressions used (361/628)
  20% boolean coverage (1/5)
@@ -33,7 +33,7 @@
      100% qualifiers (0/0)
  59% alternatives used (40/67)
  36% local declarations used (4/11)
- 70% top-level declarations used (22/31)
+ 62% top-level declarations used (22/35)
 -----<module Illumination>-----
  44% expressions used (299/678)
  18% boolean coverage (3/16)
@@ -42,7 +42,7 @@
        0% qualifiers (0/1), 1 unevaluated
  38% alternatives used (16/42)
  57% local declarations used (27/47)
- 55% top-level declarations used (11/20)
+ 45% top-level declarations used (11/24)
 -----<module Intersections>-----
  38% expressions used (382/1001)
  33% boolean coverage (11/33)
@@ -80,7 +80,7 @@
 100% local declarations used (0/0)
   0% top-level declarations used (0/1)
 -----<module Parse>-----
- 72% expressions used (192/264)
+ 72% expressions used (191/264)
  50% boolean coverage (1/2)
      100% guards (0/0)
       50% 'if' conditions (1/2), 1 always False
