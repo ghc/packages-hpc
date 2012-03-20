@@ -101,7 +101,7 @@ instance HpcHash a => HpcHash [a] where
   toHash xs = foldl' (\ h c -> toHash c `hxor` (h * 33)) 5381 xs
 
 instance (HpcHash a,HpcHash b) => HpcHash (a,b) where
-  toHash (a,b) = toHash a * 33 `hxor` toHash b
+  toHash (a,b) = (toHash a * 33) `hxor` toHash b
 
 instance HpcHash HpcPos where
   toHash (P a b c d) = Hash $ fromIntegral $ a * 0x1000000 + b * 0x10000 + c * 0x100 + d
