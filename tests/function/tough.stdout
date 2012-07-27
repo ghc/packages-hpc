@@ -29,7 +29,10 @@ badCase
 
 
 Writing: Main.hs.html
-<html><style type="text/css">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
 span.lineno { color: white; background: #aaaaaa; border-right: solid white 12px }
 span.nottickedoff { background: yellow}
 span.istickedoff { background: white }
@@ -39,6 +42,8 @@ span.funcount { font-size: small; color: orange; z-index: 2; position: absolute;
 span.decl { font-weight: bold }
 span.spaces    { background: white }
 </style>
+</head>
+<body>
 <pre>
 <span class="lineno">    1 </span>import Control.Exception as E
 <span class="lineno">    2 </span>
@@ -89,70 +94,71 @@ span.spaces    { background: white }
 <span class="lineno">   47 </span><span class="decl"><span class="istickedoff">otherwoz = True</span></span>
 
 </pre>
+</body>
 </html>
 Writing: hpc_index.html
-<html><style type="text/css">table.bar { background-color: #f25913; }
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">table.bar { background-color: #f25913; }
 td.bar { background-color: #60de51;  }
 td.invbar { background-color: #f25913;  }
 table.dashboard { border-collapse: collapse  ; border: solid 1px black }
 .dashboard td { border: solid 1px black }
 .dashboard th { border: solid 1px black }
 </style>
-<table class="dashboard" width="100%" border=1>
+</head><body><table class="dashboard" width="100%" border=1>
 <tr><th rowspan=2><a href="hpc_index.html">module</a></th><th colspan=3><a href="hpc_index_fun.html">Top Level Definitions</a></th><th colspan=3><a href="hpc_index_alt.html">Alternatives</a></th><th colspan=3><a href="hpc_index_exp.html">Expressions</a></th></tr><tr><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th></tr><tr>
 <td>&nbsp;&nbsp;<tt>module <a href="Main.hs.html">Main</a></tt></td>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
 <tr></tr><tr style="background: #e0e0e0">
 <th align=left>&nbsp;&nbsp;Program Coverage Total</tt></th>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
-</table></html>
+</table></body></html>
 Writing: hpc_index_fun.html
-<html><style type="text/css">table.bar { background-color: #f25913; }
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">table.bar { background-color: #f25913; }
 td.bar { background-color: #60de51;  }
 td.invbar { background-color: #f25913;  }
 table.dashboard { border-collapse: collapse  ; border: solid 1px black }
 .dashboard td { border: solid 1px black }
 .dashboard th { border: solid 1px black }
 </style>
-<table class="dashboard" width="100%" border=1>
+</head><body><table class="dashboard" width="100%" border=1>
 <tr><th rowspan=2><a href="hpc_index.html">module</a></th><th colspan=3><a href="hpc_index_fun.html">Top Level Definitions</a></th><th colspan=3><a href="hpc_index_alt.html">Alternatives</a></th><th colspan=3><a href="hpc_index_exp.html">Expressions</a></th></tr><tr><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th></tr><tr>
 <td>&nbsp;&nbsp;<tt>module <a href="Main.hs.html">Main</a></tt></td>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
 <tr></tr><tr style="background: #e0e0e0">
 <th align=left>&nbsp;&nbsp;Program Coverage Total</tt></th>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
-</table></html>
+</table></body></html>
 Writing: hpc_index_alt.html
-<html><style type="text/css">table.bar { background-color: #f25913; }
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">table.bar { background-color: #f25913; }
 td.bar { background-color: #60de51;  }
 td.invbar { background-color: #f25913;  }
 table.dashboard { border-collapse: collapse  ; border: solid 1px black }
 .dashboard td { border: solid 1px black }
 .dashboard th { border: solid 1px black }
 </style>
-<table class="dashboard" width="100%" border=1>
+</head><body><table class="dashboard" width="100%" border=1>
 <tr><th rowspan=2><a href="hpc_index.html">module</a></th><th colspan=3><a href="hpc_index_fun.html">Top Level Definitions</a></th><th colspan=3><a href="hpc_index_alt.html">Alternatives</a></th><th colspan=3><a href="hpc_index_exp.html">Expressions</a></th></tr><tr><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th></tr><tr>
 <td>&nbsp;&nbsp;<tt>module <a href="Main.hs.html">Main</a></tt></td>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
 <tr></tr><tr style="background: #e0e0e0">
 <th align=left>&nbsp;&nbsp;Program Coverage Total</tt></th>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
-</table></html>
+</table></body></html>
 Writing: hpc_index_exp.html
-<html><style type="text/css">table.bar { background-color: #f25913; }
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">table.bar { background-color: #f25913; }
 td.bar { background-color: #60de51;  }
 td.invbar { background-color: #f25913;  }
 table.dashboard { border-collapse: collapse  ; border: solid 1px black }
 .dashboard td { border: solid 1px black }
 .dashboard th { border: solid 1px black }
 </style>
-<table class="dashboard" width="100%" border=1>
+</head><body><table class="dashboard" width="100%" border=1>
 <tr><th rowspan=2><a href="hpc_index.html">module</a></th><th colspan=3><a href="hpc_index_fun.html">Top Level Definitions</a></th><th colspan=3><a href="hpc_index_alt.html">Alternatives</a></th><th colspan=3><a href="hpc_index_exp.html">Expressions</a></th></tr><tr><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th><th>%</th><th colspan=2>covered / total</th></tr><tr>
 <td>&nbsp;&nbsp;<tt>module <a href="Main.hs.html">Main</a></tt></td>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
 <tr></tr><tr style="background: #e0e0e0">
 <th align=left>&nbsp;&nbsp;Program Coverage Total</tt></th>
 <td align="right">83%</td><td>5/6</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="83%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">58%</td><td>7/12</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="58%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td><td align="right">71%</td><td>68/95</td><td width=100><table cellpadding=0 cellspacing=0 width="100" class="bar"><tr><td><table cellpadding=0 cellspacing=0 width="71%"><tr><td height=12 class="bar"></td></tr></table></td></tr></table></td></tr>
-</table></html>
+</table></body></html>
 
 
