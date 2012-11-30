@@ -1,5 +1,6 @@
 name:         hpc
 version:      0.6.0.0
+-- GHC 7.6.1 released with 0.6.0.0
 license:      BSD3
 license-file: LICENSE
 author:       Andy Gill
