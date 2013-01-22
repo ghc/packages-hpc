@@ -4,7 +4,11 @@ setTestOpts(compose(only_compiler_types(['ghc']),
 
 hpc_prefix = "perl ../hpcrun.pl --clear --exeext=" + config.exeext + " --hpc='" + config.hpc + "'";
 
-test('tough', cmd_prefix(hpc_prefix), compile_and_run, ['-fhpc'])
+test('tough',
+     [cmd_prefix(hpc_prefix),
+      extra_clean(['Main.hs.html', 'hpc_index.html', 'hpc_index_alt.html',
+                   'hpc_index_exp.html', 'hpc_index_fun.html', 'tough.tix'])],
+     compile_and_run, ['-fhpc'])
 
 # Test that -fhpc still works when (a) the source file is in a
 # subdirectory and (b) it is a literate file.  We had a bug in this
@@ -12,6 +16,8 @@ test('tough', cmd_prefix(hpc_prefix), compile_and_run, ['-fhpc'])
 # source file.
 test('subdir/tough2',
      [ literate,
+       extra_clean(['Main.hs.html', 'hpc_index.html', 'hpc_index_alt.html',
+                    'hpc_index_exp.html', 'hpc_index_fun.html', 'tough2.tix']),
        cmd_prefix(hpc_prefix),
        omit_ways(['ghci'] + prof_ways) ], # profile goes in the wrong place
      compile_and_run, ['-fhpc'])
