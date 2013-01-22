@@ -10,14 +10,3 @@ test('tough',
                    'hpc_index_exp.html', 'hpc_index_fun.html', 'tough.tix'])],
      compile_and_run, ['-fhpc'])
 
-# Test that -fhpc still works when (a) the source file is in a
-# subdirectory and (b) it is a literate file.  We had a bug in this
-# area caused by the handling of line pragmas in the preprocessed
-# source file.
-test('subdir/tough2',
-     [ literate,
-       extra_clean(['Main.hs.html', 'hpc_index.html', 'hpc_index_alt.html',
-                    'hpc_index_exp.html', 'hpc_index_fun.html', 'tough2.tix']),
-       cmd_prefix(hpc_prefix),
-       omit_ways(['ghci'] + prof_ways) ], # profile goes in the wrong place
-     compile_and_run, ['-fhpc'])
