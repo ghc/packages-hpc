@@ -8,10 +8,11 @@ hpc_prefix = "perl ../hpcrun.pl --clear --exeext=" + config.exeext + " --hpc='" 
 # subdirectory and (b) it is a literate file.  We had a bug in this
 # area caused by the handling of line pragmas in the preprocessed
 # source file.
-test('subdir/tough2',
+test('tough2',
      [ literate,
        extra_clean(['Main.hs.html', 'hpc_index.html', 'hpc_index_alt.html',
-                    'hpc_index_exp.html', 'hpc_index_fun.html', 'tough2.tix']),
+                    'hpc_index_exp.html', 'hpc_index_fun.html',
+                    'subdir/tough2.hi', 'subdir/tough2.o', 'tough2.tix']),
        cmd_prefix(hpc_prefix),
        omit_ways(['ghci'] + prof_ways) ], # profile goes in the wrong place
-     compile_and_run, ['-fhpc'])
+     multimod_compile_and_run, ['subdir/tough2.lhs', '-fhpc'])
