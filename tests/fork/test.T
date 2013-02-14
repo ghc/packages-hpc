@@ -1,6 +1,6 @@
-setTestOpts(compose(only_compiler_types(['ghc']),
-		    compose(omit_ways(['ghci','threaded2']),
-			    when(fast(), skip))))
+setTestOpts([only_compiler_types(['ghc']),
+             omit_ways(['ghci','threaded2']),
+             when(fast(), skip)])
 
 hpc_prefix = "perl ../hpcrun.pl --clear --exeext=" + config.exeext + " --hpc='" + config.hpc + "'";
 

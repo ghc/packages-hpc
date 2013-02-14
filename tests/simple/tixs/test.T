@@ -1,6 +1,6 @@
-setTestOpts(compose(only_compiler_types(['ghc']),
-		    compose(omit_ways(['ghci']),
-			    when(fast(), skip))))
+setTestOpts([only_compiler_types(['ghc']),
+             omit_ways(['ghci']),
+             when(fast(), skip)])
 
 hpcsample = 'hpc_sample'
 
