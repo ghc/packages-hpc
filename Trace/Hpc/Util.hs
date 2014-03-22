@@ -27,15 +27,15 @@ import Data.Word
 -- | 'HpcPos' is an Hpc local rendition of a Span.
 data HpcPos = P !Int !Int !Int !Int deriving (Eq, Ord)
 
--- | 'fromHpcPos' explodes the HpcPos into line:column-line:colunm
+-- | 'fromHpcPos' explodes the HpcPos into /line:column/-/line:colunm/
 fromHpcPos :: HpcPos -> (Int,Int,Int,Int)
 fromHpcPos (P l1 c1 l2 c2) = (l1,c1,l2,c2)
 
--- | 'toHpcPos' implodes to HpcPos, from line:column-line:colunm
+-- | 'toHpcPos' implodes to HpcPos, from /line:column/-/line:colunm/
 toHpcPos :: (Int,Int,Int,Int) -> HpcPos
 toHpcPos (l1,c1,l2,c2) = P l1 c1 l2 c2
 
--- | asks the question, is the first argument inside the second argument.
+-- | Predicate determining whether the first argument is inside the second argument.
 insideHpcPos :: HpcPos -> HpcPos -> Bool
 insideHpcPos small big =
              sl1 >= bl1 &&

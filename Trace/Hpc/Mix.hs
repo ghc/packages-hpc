@@ -6,7 +6,7 @@
 -- Colin Runciman and Andy Gill, June 2006
 ---------------------------------------------------------------
 
--- | Datatypes and file-access routines for the per-module (.mix)
+-- | Datatypes and file-access routines for the per-module (@.mix@)
 -- indexes used by Hpc.
 module Trace.Hpc.Mix
         ( Mix(..)
@@ -34,10 +34,11 @@ import Trace.Hpc.Tix
 
 -- | 'Mix' is the information about a modules static properties, like
 -- location of Tix's in a file.
--- tab stops are the size of a tab in the provided line:colunm values.
+--
+-- Tab stops are the size of a tab in the provided /line:colunm/ values.
+--
 --  * In GHC, this is 1 (a tab is just a character)
---  * With hpc-tracer, this is 8 (a tab represents several spaces).
-
+--  * With @hpc-tracer@, this is 8 (a tab represents several spaces).
 data Mix = Mix
              FilePath           -- location of original file
              UTCTime            -- time of original file's last update
