@@ -17,6 +17,9 @@ description:
     See <http://www.haskell.org/haskellwiki/Haskell_program_coverage> for more
     information.
 
+extra-source-files:
+    changelog.md
+
 source-repository head
     type:     git
     location: http://git.haskell.org/packages/hpc.git
