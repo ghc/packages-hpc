@@ -35,7 +35,7 @@ import Trace.Hpc.Tix
 -- | 'Mix' is the information about a modules static properties, like
 -- location of Tix's in a file.
 --
--- Tab stops are the size of a tab in the provided /line:colunm/ values.
+-- Tab stops are the size of a tab in the provided /line:column/ values.
 --
 --  * In GHC, this is 1 (a tab is just a character)
 --  * With @hpc-tracer@, this is 8 (a tab represents several spaces).

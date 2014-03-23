@@ -15,7 +15,7 @@ module Trace.Hpc.Tix(Tix(..), TixModule(..),
 import Data.List (isSuffixOf)
 import Trace.Hpc.Util (Hash, catchIO)
 
--- | 'Tix' is the storage format for our dynamic imformation about
+-- | 'Tix' is the storage format for our dynamic information about
 -- what boxes are ticked.
 data Tix = Tix [TixModule]
         deriving (Read, Show, Eq)
