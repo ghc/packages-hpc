@@ -1,5 +1,9 @@
 # Changelog for [`hpc` package](http://hackage.haskell.org/package/hpc)
 
+## 0.6.0.2  *TBA*
+
+  * Bundled with GHC 7.10.1
+
 ## 0.6.0.1  *Mar 2014*
 
   * Bundled with GHC 7.8.1
