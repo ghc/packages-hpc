@@ -21,7 +21,7 @@ module Trace.Hpc.Mix
   where
 
 import Data.Maybe (catMaybes)
-import Data.Time
+import Data.Time (UTCTime)
 import Data.Tree
 import Data.Char
 
