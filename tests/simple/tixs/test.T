@@ -67,3 +67,7 @@ test('hpc_hand_overlay',
       "{hpc} report total3.tix"])
 
 test('hpc_bad_001', exit_code(1), run_command, ["{hpc} bad arguments"])
+
+test('T9619', ignore_output, run_command,
+     # Having the same mix file in two different hpcdirs should work.
+     ["{hpc} report hpc_sample.tix --hpcdir=.hpc --hpcdir=.hpc.copy"])

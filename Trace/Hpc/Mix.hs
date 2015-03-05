@@ -49,7 +49,7 @@ data Mix = Mix
              Hash               -- hash of mix entry + timestamp
              Int                -- tab stop value.
              [MixEntry]         -- entries
-        deriving (Show,Read)
+        deriving (Show,Read,Eq)
 
 type MixEntry = (HpcPos, BoxLabel)
 
@@ -104,9 +104,13 @@ readMix dirNames mod' = do
                    | dirName <- dirNames
                    ]
    case catMaybes res of
-     [r] -> return r
-     xs@(_:_) -> error $ "found " ++ show(length xs) ++ " instances of " ++ modName ++ " in " ++ show dirNames
-     _        -> error $ "can not find " ++ modName ++ " in " ++ show dirNames
+     xs@(x:_:_) | any (/= x) (tail xs) ->
+              -- Only complain if multiple *different* `Mix` files with the
+              -- same name are found (#9619).
+              error $ "found " ++ show(length xs) ++ " different instances of "
+                      ++ modName ++ " in " ++ show dirNames
+     (x:_) -> return x
+     _     -> error $ "can not find " ++ modName ++ " in " ++ show dirNames
 
 mixName :: FilePath -> String -> String
 mixName dirName name = dirName </> name <.> "mix"
