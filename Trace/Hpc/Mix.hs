@@ -27,6 +27,8 @@ import Data.Time (UTCTime)
 import Data.Tree
 import Data.Char
 
+import System.FilePath
+
 -- a module index records the attributes of each tick-box that has
 -- been introduced in that module, accessed by tick-number position
 -- in the list
@@ -107,7 +109,7 @@ readMix dirNames mod' = do
      _        -> error $ "can not find " ++ modName ++ " in " ++ show dirNames
 
 mixName :: FilePath -> String -> String
-mixName dirName name = dirName ++ "/" ++ name ++ ".mix"
+mixName dirName name = dirName </> name <.> "mix"
 
 ------------------------------------------------------------------------------
 

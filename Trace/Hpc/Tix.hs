@@ -1,6 +1,10 @@
 {-# LANGUAGE CPP #-}
-#ifdef __GLASGOW_HASKELL__
+#if __GLASGOW_HASKELL__ >= 704
 {-# LANGUAGE Safe #-}
+#elif __GLASGOW_HASKELL__ >= 702
+-- System.FilePath in filepath version 1.2.0.1 isn't marked or implied Safe,
+-- as shipped with GHC 7.2.
+{-# LANGUAGE Trustworthy #-}
 #endif
 ------------------------------------------------------------
 -- Andy Gill and Colin Runciman, June 2006
@@ -12,7 +16,8 @@ module Trace.Hpc.Tix(Tix(..), TixModule(..),
                      tixModuleName, tixModuleHash, tixModuleTixs,
                      readTix, writeTix, getTixFileName) where
 
-import Data.List (isSuffixOf)
+import System.FilePath (replaceExtension)
+
 import Trace.Hpc.Util (Hash, catchIO)
 
 -- | 'Tix' is the storage format for our dynamic information about
@@ -52,15 +57,7 @@ writeTix :: String
 writeTix name tix =
   writeFile name (show tix)
 
-{-
-tixName :: String -> String
-tixName name = name ++ ".tix"
--}
-
 -- | 'getTixFullName' takes a binary or @.tix@-file name,
 -- and normalizes it into a @.tix@-file name.
 getTixFileName :: String -> String
-getTixFileName str | ".tix" `isSuffixOf` str
-                   = str
-                   | otherwise
-                   = str ++ ".tix"
+getTixFileName str = replaceExtension str "tix"
