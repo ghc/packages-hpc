@@ -16,4 +16,6 @@ Options:
     --reset-hpcdirs               empty the list of hpcdir's
                                   [rarely used]
     --xml-output                  show output in XML
+    --verbosity=[0-2]             verbosity level, 0-2
+                                  default 1
 

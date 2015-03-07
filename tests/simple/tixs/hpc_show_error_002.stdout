@@ -14,4 +14,6 @@ Options:
     --reset-hpcdirs               empty the list of hpcdir's
                                   [rarely used]
     --output=FILE                 output FILE
+    --verbosity=[0-2]             verbosity level, 0-2
+                                  default 1
 

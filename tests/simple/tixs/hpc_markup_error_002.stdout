@@ -16,4 +16,6 @@ Options:
     --fun-entry-count             show top-level function entry counts
     --highlight-covered           highlight covered code, rather that code gaps
     --destdir=DIR                 path to write output to
+    --verbosity=[0-2]             verbosity level, 0-2
+                                  default 1
 
