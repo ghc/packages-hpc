@@ -2,7 +2,7 @@ setTestOpts([only_compiler_types(['ghc']),
              omit_ways(['ghci']),
              when(fast(), skip)])
 
-hpc_prefix = "perl ../hpcrun.pl --clear --exeext=" + config.exeext + " --hpc='" + config.hpc + "'";
+hpc_prefix = "perl ../hpcrun.pl --clear --exeext={exeext} --hpc={hpc}"
 
 # Test that -fhpc still works when (a) the source file is in a
 # subdirectory and (b) it is a literate file.  We had a bug in this
