@@ -1,8 +1,10 @@
 # Changelog for [`hpc` package](http://hackage.haskell.org/package/hpc)
 
-## 0.6.0.2  *TBA*
+## 0.6.0.2  *Mar 2015*
 
   * Bundled with GHC 7.10.1
+
+  * Allow same `Mix` file in different dirs (#9619)
 
 ## 0.6.0.1  *Mar 2014*
 
