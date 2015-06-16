@@ -22,12 +22,20 @@ module Trace.Hpc.Mix
         )
   where
 
-import Data.Maybe (catMaybes)
+import Data.Maybe (catMaybes, fromMaybe)
 import Data.Time (UTCTime)
 import Data.Tree
-import Data.Char
 
 import System.FilePath
+
+#if MIN_VERSION_base(4,6,0)
+import Text.Read (readMaybe)
+#else
+readMaybe :: Read a => String -> Maybe a
+readMaybe s = case reads s of
+  [(x, s')] | all isSpace s' -> Just x
+  _                          -> Nothing
+#endif
 
 -- a module index records the attributes of each tick-box that has
 -- been introduced in that module, accessed by tick-number position
@@ -89,18 +97,15 @@ readMix :: [String]                 -- ^ Dir Names
         -> Either String TixModule  -- ^ module wanted
         -> IO Mix
 readMix dirNames mod' = do
-   let modName = case mod' of
-                    Left str -> str
-                    Right tix -> tixModuleName tix
-   res <- sequence [ (do contents <- readFile (mixName dirName modName)
-                         case reads contents of
-                           [(r@(Mix _ _ h _ _),cs)]
-                                | all isSpace cs
-                               && (case mod' of
-                                     Left  _   -> True
-                                     Right tix -> h == tixModuleHash tix
-                                  ) -> return $ Just r
-                           _ -> return $ Nothing) `catchIO` (\ _ -> return $ Nothing)
+   let modName = either id tixModuleName mod'
+   res <- sequence [ (do let mixPath    = mixName dirName modName
+                             parseError = error ("can not parse " ++ mixPath)
+                             parse      = fromMaybe parseError . readMaybe
+                         mix <- parse `fmap` readFile mixPath
+                         case mod' of
+                            Left  _   -> return $ Just mix -- Bypass hash check
+                            Right tix -> return $ checkHash tix mix mixPath)
+                     `catchIO` (\ _ -> return $ Nothing)
                    | dirName <- dirNames
                    ]
    case catMaybes res of
@@ -114,6 +119,17 @@ readMix dirNames mod' = do
 
 mixName :: FilePath -> String -> String
 mixName dirName name = dirName </> name <.> "mix"
+
+-- | Check that hash in .tix and .mix file match.
+checkHash :: TixModule -> Mix -> FilePath -> Maybe Mix
+checkHash tix mix@(Mix _ _ mixHash _ _) mixPath
+  | modHash == mixHash = Just mix
+  | otherwise = error $
+      "hash in tix file for module " ++ modName ++ " (" ++ show modHash ++ ")\n"
+      ++ "does not match hash in " ++ mixPath ++ " (" ++ show mixHash ++ ")"
+  where
+    modName = tixModuleName tix
+    modHash = tixModuleHash tix
 
 ------------------------------------------------------------------------------
 

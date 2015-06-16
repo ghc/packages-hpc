@@ -1,0 +1,2 @@
+hpc: hash in tix file for module Main (1234567890)
+does not match hash in ./.hpc/Main.mix (2454134535)

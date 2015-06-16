@@ -71,3 +71,11 @@ test('hpc_bad_001', exit_code(1), run_command, ["{hpc} bad arguments"])
 test('T9619', ignore_output, run_command,
      # Having the same mix file in two different hpcdirs should work.
      ["{hpc} report hpc_sample.tix --hpcdir=.hpc --hpcdir=.hpc.copy"])
+
+# Show different error messages for different types of failures.
+test('T10529a', exit_code(1), run_command,
+     ["{hpc} report hpc_sample_non_existing_module.tix"])
+test('T10529b', exit_code(1), run_command,
+     ["{hpc} report hpc_sample_incompatible_hash.tix"])
+test('T10529c', exit_code(1), run_command,
+     ["{hpc} report hpc_sample_no_parse.tix"])
