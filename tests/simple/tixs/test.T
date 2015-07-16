@@ -23,9 +23,9 @@ test('hpc_markup_error_001', exit_code(1), run_command,
 test('hpc_markup_error_002', exit_code(1), run_command,
      ["{hpc} markup hpc001.hs"]) # bad .tix file
 test('hpc_markup_001', normal, run_command,
-     ["{hpc} markup hpc_sample.tix --highlight-covered; cat Main.hs.html"])
+     ["{hpc} markup --verbosity=0 hpc_sample.tix --highlight-covered; cat Main.hs.html"])
 test('hpc_markup_002', normal, run_command,
-     ["{hpc} markup hpc_sample.tix --fun-entry-count; cat Main.hs.html"])
+     ["{hpc} markup --verbosity=0 hpc_sample.tix --fun-entry-count; cat Main.hs.html"])
 
 test('hpc_help_show', normal, run_command, ["{hpc} help show"])
 test('hpc_show', normal, run_command, ["{hpc} show hpc_sample.tix"])
@@ -45,26 +45,26 @@ test('hpc_help_overlay', normal, run_command, ["{hpc} help overlay"])
 test('hpc_overlay',
      [extra_clean(['sample_overlay1.tix', 'total1.tix'])],
      run_command,
-     ["{hpc} overlay sample_overlay.ovr > sample_overlay1.tix; "
-      "cat sample_overlay1.tix; "
+     ["({hpc} overlay sample_overlay.ovr > sample_overlay1.tix; "
+      "cat sample_overlay1.tix; echo; "
       "{hpc} combine hpc_sample.tix sample_overlay1.tix > total1.tix; "
-      "{hpc} report total1.tix"])
+      "{hpc} report total1.tix)"])
 
 test('hpc_overlay2',
      [extra_clean(['sample_overlay2.tix', 'total2.tix'])],
      run_command,
-     ["{hpc} overlay sample_overlay.ovr --output=sample_overlay2.tix; "
-      "cat sample_overlay2.tix; "
+     ["({hpc} overlay sample_overlay.ovr --output=sample_overlay2.tix; "
+      "cat sample_overlay2.tix; echo; "
       "{hpc} combine hpc_sample.tix sample_overlay2.tix --output=total2.tix; "
-      "{hpc} report total2.tix"])
+      "{hpc} report total2.tix)"])
 
 test('hpc_hand_overlay',
      [extra_clean(['sample_overlay3.tix', 'total3.tix'])],
      run_command,
-     ["{hpc} overlay hand_overlay.ovr --output=sample_overlay3.tix; "
-      "cat sample_overlay3.tix; "
+     ["({hpc} overlay hand_overlay.ovr --output=sample_overlay3.tix; "
+      "cat sample_overlay3.tix; echo; "
       "{hpc} combine hpc_sample.tix sample_overlay3.tix --output=total3.tix; "
-      "{hpc} report total3.tix"])
+      "{hpc} report total3.tix)"])
 
 test('hpc_bad_001', exit_code(1), run_command, ["{hpc} bad arguments"])
 
