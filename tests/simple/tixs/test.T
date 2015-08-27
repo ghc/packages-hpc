@@ -22,10 +22,12 @@ test('hpc_markup_error_001', exit_code(1), run_command,
      ["{hpc} markup"]) # no .tix file
 test('hpc_markup_error_002', exit_code(1), run_command,
      ["{hpc} markup hpc001.hs"]) # bad .tix file
-test('hpc_markup_001', normal, run_command,
-     ["{hpc} markup --verbosity=0 hpc_sample.tix --highlight-covered; cat Main.hs.html"])
-test('hpc_markup_002', normal, run_command,
-     ["{hpc} markup --verbosity=0 hpc_sample.tix --fun-entry-count; cat Main.hs.html"])
+test('hpc_markup_001', extra_clean(['markup_001/*']), run_command,
+     ["{hpc} markup --verbosity=0 --destdir=markup_001"
+      " hpc_sample.tix --highlight-covered; cat markup_001/Main.hs.html"])
+test('hpc_markup_002', extra_clean(['markup_002/*']), run_command,
+     ["{hpc} markup --verbosity=0 --destdir=markup_002"
+      " hpc_sample.tix --fun-entry-count; cat markup_002/Main.hs.html"])
 
 test('hpc_help_show', normal, run_command, ["{hpc} help show"])
 test('hpc_show', normal, run_command, ["{hpc} show hpc_sample.tix"])
