@@ -1,7 +1,11 @@
 "Hello"
 "Hello"
 badCase
+CallStack:
+  error, called at tough.hs:39:14 in main:Main
 badCase
+CallStack:
+  error, called at tough.hs:39:14 in main:Main
 "Bark"
 "Hello"
 (1,2,3)
