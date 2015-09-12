@@ -22,6 +22,7 @@ module Trace.Hpc.Mix
         )
   where
 
+import Data.List
 import Data.Maybe (catMaybes, fromMaybe)
 import Data.Time (UTCTime)
 import Data.Tree
@@ -113,9 +114,10 @@ readMix dirNames mod' = do
               -- Only complain if multiple *different* `Mix` files with the
               -- same name are found (#9619).
               error $ "found " ++ show(length xs) ++ " different instances of "
-                      ++ modName ++ " in " ++ show dirNames
+                      ++ modName ++ " in " ++ intercalate ", " dirNames
      (x:_) -> return x
-     _     -> error $ "can not find " ++ modName ++ " in " ++ show dirNames
+     _     -> error $ "can not find "
+                      ++ modName ++ " in " ++ intercalate ", " dirNames
 
 mixName :: FilePath -> String -> String
 mixName dirName name = dirName </> name <.> "mix"
