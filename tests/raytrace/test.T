@@ -1,6 +1,4 @@
-setTestOpts([only_compiler_types(['ghc']),
-             omit_ways(['ghci']),
-             when(fast(), skip)])
+setTestOpts([omit_ways(['ghci']), when(fast(), skip)])
 
 hpc_prefix = "perl ../hpcrun.pl --clear --exeext={exeext} --hpc={hpc}"
 

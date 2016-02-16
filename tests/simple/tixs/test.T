@@ -1,6 +1,4 @@
-setTestOpts([only_compiler_types(['ghc']),
-             omit_ways(['ghci']),
-             when(fast(), skip)])
+setTestOpts([omit_ways(['ghci']), when(fast(), skip)])
 
 test('hpc_help', normal, run_command, ["{hpc} help"])
 test('hpc_help_help', normal, run_command, ["{hpc} help help"])

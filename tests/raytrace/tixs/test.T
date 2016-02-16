@@ -1,6 +1,4 @@
-setTestOpts([only_compiler_types(['ghc']),
-             omit_ways(['ghci']),
-             when(fast(), skip)])
+setTestOpts([omit_ways(['ghci']), when(fast(), skip)])
 
 test('hpc_report_multi_001', normal, run_command,
      ["{hpc} report hpc_sample --include=Geometry --per-module"])
