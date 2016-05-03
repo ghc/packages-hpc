@@ -1,6 +1,6 @@
 # Changelog for [`hpc` package](http://hackage.haskell.org/package/hpc)
 
-## 0.6.0.3  *Jan 2016*
+## 0.6.0.3  *May 2016*
 
   * Bundled with GHC 8.0.1
 
