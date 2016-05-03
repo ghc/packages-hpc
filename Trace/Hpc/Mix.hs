@@ -26,17 +26,13 @@ import Data.List
 import Data.Maybe (catMaybes, fromMaybe)
 import Data.Time (UTCTime)
 import Data.Tree
-
-import System.FilePath
-
 #if MIN_VERSION_base(4,6,0)
 import Text.Read (readMaybe)
 #else
-readMaybe :: Read a => String -> Maybe a
-readMaybe s = case reads s of
-  [(x, s')] | all isSpace s' -> Just x
-  _                          -> Nothing
+import Data.Char (isSpace)
 #endif
+
+import System.FilePath
 
 -- a module index records the attributes of each tick-box that has
 -- been introduced in that module, accessed by tick-number position
@@ -44,6 +40,13 @@ readMaybe s = case reads s of
 
 import Trace.Hpc.Util (HpcPos, insideHpcPos, Hash, HpcHash(..), catchIO)
 import Trace.Hpc.Tix
+
+#if !MIN_VERSION_base(4,6,0)
+readMaybe :: Read a => String -> Maybe a
+readMaybe s = case reads s of
+  [(x, s')] | all isSpace s' -> Just x
+  _                          -> Nothing
+#endif
 
 -- | 'Mix' is the information about a modules static properties, like
 -- location of Tix's in a file.
