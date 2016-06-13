@@ -1,6 +1,6 @@
 setTestOpts([omit_ways(['ghci']), when(fast(), skip)])
 
-hpc_prefix = "perl ../hpcrun.pl --clear --exeext={exeext} --hpc={hpc}"
+hpc_prefix = "perl hpcrun.pl --clear --exeext={exeext} --hpc={hpc}"
 
 # TODO. It is unclear what the purpose of this test is. It produces lots of
 # output, but the expected output file is missing. I (thomie) added
