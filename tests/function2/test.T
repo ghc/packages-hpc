@@ -7,7 +7,8 @@ hpc_prefix = "perl hpcrun.pl --clear --exeext={exeext} --hpc={hpc}"
 # area caused by the handling of line pragmas in the preprocessed
 # source file.
 test('tough2',
-     [ literate,
+     [extra_files(['../hpcrun.pl', 'subdir/']),
+       literate,
        cmd_prefix(hpc_prefix),
        omit_ways(['ghci'] + prof_ways) ], # profile goes in the wrong place
      multimod_compile_and_run, ['subdir/tough2.lhs', '-fhpc'])
