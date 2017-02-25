@@ -20,10 +20,10 @@ test('hpc_markup_error_001', exit_code(1), run_command,
      ["{hpc} markup"]) # no .tix file
 test('hpc_markup_error_002', exit_code(1), run_command,
      ["{hpc} markup hpc001.hs"]) # bad .tix file
-test('hpc_markup_001', extra_clean(['markup_001/*']), run_command,
+test('hpc_markup_001', normal, run_command,
      ["{hpc} markup --verbosity=0 --destdir=markup_001"
       " hpc_sample.tix --highlight-covered; cat markup_001/Main.hs.html"])
-test('hpc_markup_002', extra_clean(['markup_002/*']), run_command,
+test('hpc_markup_002', normal, run_command,
      ["{hpc} markup --verbosity=0 --destdir=markup_002"
       " hpc_sample.tix --fun-entry-count; cat markup_002/Main.hs.html"])
 
@@ -43,7 +43,7 @@ test('hpc_draft', normal, run_command, ["{hpc} draft hpc_sample.tix"])
 test('hpc_help_overlay', normal, run_command, ["{hpc} help overlay"])
 
 test('hpc_overlay',
-     [extra_clean(['sample_overlay1.tix', 'total1.tix'])],
+     normal,
      run_command,
      ["({hpc} overlay sample_overlay.ovr > sample_overlay1.tix; "
       "cat sample_overlay1.tix; echo; "
@@ -51,7 +51,7 @@ test('hpc_overlay',
       "{hpc} report total1.tix)"])
 
 test('hpc_overlay2',
-     [extra_clean(['sample_overlay2.tix', 'total2.tix'])],
+     normal,
      run_command,
      ["({hpc} overlay sample_overlay.ovr --output=sample_overlay2.tix; "
       "cat sample_overlay2.tix; echo; "
@@ -59,7 +59,7 @@ test('hpc_overlay2',
       "{hpc} report total2.tix)"])
 
 test('hpc_hand_overlay',
-     [extra_clean(['sample_overlay3.tix', 'total3.tix'])],
+     normal,
      run_command,
      ["({hpc} overlay hand_overlay.ovr --output=sample_overlay3.tix; "
       "cat sample_overlay3.tix; echo; "
@@ -73,9 +73,12 @@ test('T9619', ignore_stdout, run_command,
      ["{hpc} report hpc_sample.tix --hpcdir=.hpc --hpcdir=.hpc.copy"])
 
 # Show different error messages for different types of failures.
-test('T10529a', exit_code(1), run_command,
+test('T10529a', [extra_files(['hpc_sample_non_existing_module.tix']),
+                 exit_code(1)], run_command,
      ["{hpc} report hpc_sample_non_existing_module.tix"])
-test('T10529b', exit_code(1), run_command,
+test('T10529b', [extra_files(['.hpc/', 'hpc_sample_incompatible_hash.tix']),
+                 exit_code(1)], run_command,
      ["{hpc} report hpc_sample_incompatible_hash.tix"])
-test('T10529c', exit_code(1), run_command,
+test('T10529c', [extra_files(['.hpc/', 'hpc_sample_no_parse.tix']),
+                 exit_code(1)], run_command,
      ["{hpc} report hpc_sample_no_parse.tix"])
