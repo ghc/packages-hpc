@@ -14,6 +14,9 @@ span.spaces    { background: white }
 </head>
 <body>
 <pre>
+<span class="decl"><span class="nottickedoff">never executed</span> <span class="tickonlytrue">always true</span> <span class="tickonlyfalse">always false</span></span>
+</pre>
+<pre>
 <span class="lineno">    1 </span><span class="funcount">-- entered once</span><span class="decl"><span class="istickedoff">main = print (const &quot;Hello&quot; <span class="nottickedoff">&quot;World&quot;</span>)</span></span>
 
 </pre>
