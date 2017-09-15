@@ -35,7 +35,7 @@ Library
         Trace.Hpc.Reflect
 
     Build-Depends:
-        base       >= 4.4.1 && < 4.11,
+        base       >= 4.4.1 && < 4.12,
         containers >= 0.4.1 && < 0.6,
         directory  >= 1.1   && < 1.4,
         filepath   >= 1     && < 1.5,
