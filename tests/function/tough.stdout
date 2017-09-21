@@ -1,10 +1,10 @@
 "Hello"
 "Hello"
 badCase
-CallStack (from ImplicitParams):
+CallStack (from HasCallStack):
   error, called at tough.hs:39:14 in main:Main
 badCase
-CallStack (from ImplicitParams):
+CallStack (from HasCallStack):
   error, called at tough.hs:39:14 in main:Main
 "Bark"
 "Hello"
