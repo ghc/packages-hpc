@@ -39,5 +39,5 @@ Library
         containers >= 0.4.1 && < 0.7,
         directory  >= 1.1   && < 1.4,
         filepath   >= 1     && < 1.5,
-        time       >= 1.2   && < 1.9
+        time       >= 1.2   && < 1.10
     ghc-options: -Wall
