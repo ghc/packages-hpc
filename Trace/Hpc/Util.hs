@@ -51,13 +51,18 @@ instance Show HpcPos where
 instance Read HpcPos where
   readsPrec _i pos = [(toHpcPos (read l1,read c1,read l2,read c2),after)]
       where
-         (before,after)   = span (/= ',') pos
+         (before,after) = span (/= ',') pos
+         parseError a   = error $ "Read HpcPos: Could not parse: " ++ show a
          (lhs0,rhs0)    = case span (/= '-') before of
                                (lhs,'-':rhs) -> (lhs,rhs)
                                (lhs,"")      -> (lhs,lhs)
-                               _ -> error "bad parse"
-         (l1,':':c1)      = span (/= ':') lhs0
-         (l2,':':c2)      = span (/= ':') rhs0
+                               _ -> parseError before
+         (l1,c1)        = case span (/= ':') lhs0 of
+                            (l,':':c) -> (l,c)
+                            _ -> parseError lhs0
+         (l2,c2)        = case span (/= ':') rhs0 of
+                            (l,':':c) -> (l,c)
+                            _ -> parseError rhs0
 
 ------------------------------------------------------------------------------
 
