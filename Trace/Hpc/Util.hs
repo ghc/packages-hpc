@@ -16,13 +16,19 @@ module Trace.Hpc.Util
        , HpcHash(..)
        , Hash
        , catchIO
+       , readFileUtf8
+       , writeFileUtf8
        ) where
 
+import Control.DeepSeq (deepseq)
 import qualified Control.Exception as Exception
 import Data.List(foldl')
 import Data.Char (ord)
 import Data.Bits (xor)
 import Data.Word
+import System.Directory (createDirectoryIfMissing)
+import System.FilePath (takeDirectory)
+import System.IO
 
 -- | 'HpcPos' is an Hpc local rendition of a Span.
 data HpcPos = P !Int !Int !Int !Int deriving (Eq, Ord)
@@ -117,3 +123,23 @@ hxor (Hash x) (Hash y) = Hash $ x `xor` y
 
 catchIO :: IO a -> (Exception.IOException -> IO a) -> IO a
 catchIO = Exception.catch
+
+
+-- | Read a file strictly, as opposed to how `readFile` does it using lazy IO, but also
+-- disregard system locale and assume that the file is encoded in UTF-8. Haskell source
+-- files are expected to be encoded in UTF-8 by GHC.
+readFileUtf8 :: FilePath -> IO String
+readFileUtf8 filepath =
+  withBinaryFile filepath ReadMode $ \h -> do
+    hSetEncoding h utf8  -- see #17073
+    contents <- hGetContents h
+    contents `deepseq` hClose h -- prevent lazy IO
+    return contents
+
+-- | Write file in UTF-8 encoding. Parent directory will be created if missing.
+writeFileUtf8 :: FilePath -> String -> IO ()
+writeFileUtf8 filepath str = do
+  createDirectoryIfMissing True (takeDirectory filepath)
+  withBinaryFile filepath WriteMode $ \h -> do
+    hSetEncoding h utf8  -- see #17073
+    hPutStr h str
