@@ -18,7 +18,7 @@ module Trace.Hpc.Tix(Tix(..), TixModule(..),
 
 import System.FilePath (replaceExtension)
 
-import Trace.Hpc.Util (Hash, catchIO)
+import Trace.Hpc.Util (Hash, catchIO, readFileUtf8, writeFileUtf8)
 
 -- | 'Tix' is the storage format for our dynamic information about
 -- what boxes are ticked.
@@ -45,17 +45,15 @@ tixModuleTixs (TixModule  _ _ _ tixs) = tixs
 -- | Read a @.tix@ File.
 readTix :: String
         -> IO (Maybe Tix)
-readTix tix_filename =
-  catchIO (do contents <- readFile $ tix_filename
-              return $ Just $ read contents)
-          (\ _ -> return $ Nothing)
+readTix tixFilename =
+  catchIO (fmap (Just . read) $ readFileUtf8 tixFilename)
+          (const $ return Nothing)
 
 -- | Write a @.tix@ File.
 writeTix :: String
          -> Tix
          -> IO ()
-writeTix name tix =
-  writeFile name (show tix)
+writeTix name tix = writeFileUtf8 name (show tix)
 
 -- | 'getTixFullName' takes a binary or @.tix@-file name,
 -- and normalizes it into a @.tix@-file name.
