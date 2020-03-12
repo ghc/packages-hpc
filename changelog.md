@@ -2,7 +2,7 @@
 
 ## 0.6.1.0  *October 2019*
 
-  * Addition of `readFielUtf8` and `writeFileUtf8` functions.
+  * Addition of `readFileUtf8` and `writeFileUtf8` functions.
   * Ensure `.tix` files read and written in UTF-8, regadless of the system locale.
 
 ## 0.6.0.3  *May 2016*
